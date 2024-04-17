@@ -6,7 +6,7 @@ export default function App() {
   return (
     <View className="flex-1 items-center justify-center">
       <Text className="text-3xl text-blue-600">
-        <Link href="/sign-up-phone-number">Go to Auth</Link>
+        <Link href="/home">Go to Home</Link>
       </Text>
       <StatusBar style="auto" />
     </View>

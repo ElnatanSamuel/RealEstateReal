@@ -7,7 +7,7 @@ const AuthLayout = () => {
   return (
     <>
       <Stack>
-        <Stack.Screen
+        {/* <Stack.Screen
           name="sign-up-phone-number"
           options={{ headerShown: false }}
         />
@@ -18,7 +18,7 @@ const AuthLayout = () => {
         <Stack.Screen
           name="enter-sign-up-code"
           options={{ headerShown: false }}
-        />
+        /> */}
       </Stack>
       <StatusBar barStyle="light-content" style="dark" />
     </>
