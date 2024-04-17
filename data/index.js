@@ -358,5 +358,12 @@ const roomData = [
   },
 ];
 
+const rooms = [
+  {
+    "house_id": 1,
+    "room_id": 1
+  }
+]
+
 export {houseData, categMapData, roomData}
   
