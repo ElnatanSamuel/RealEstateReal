@@ -1,11 +1,28 @@
-import React from 'react'
-import { Text } from 'react-native'
+import {  ScrollView } from "react-native";
+import React, { useDebugValue } from "react";
 
+import HouseCard from "../../components/HouseCard";
 
-const saved = () => {
+import { useSelector } from "react-redux";
+import {selectSaved} from "../../slices/houseSlice";
+
+const Saved = () => {
+
+  const saved = useSelector(selectSaved)
+
   return (
-    <Text>saved</Text>
-  )
-}
 
-export default saved
+
+    <ScrollView
+    className="flex-1 gap-0"
+    decelerationRate="fast"
+    vertical={true}
+    showsVerticalScrollIndicator={false} >
+    {saved.map((room, index) => (
+      <HouseCard room={room} key={index} />
+    ))}
+  </ScrollView>
+  );
+};
+
+export default Saved;

@@ -19,33 +19,7 @@ import { createStackNavigator  } from '@react-navigation/stack';
 const ScreensLayout = () => {
   return (
     <GestureHandlerRootView className="flex-1">
-      <Drawer
-      // .Navigator
-      //   initialRouteName="Home"
-      //   screenOptions={{
-      //     headerTransparent:true,
-      //     headerTitle: '',
-      //     drawerType:'slide',
-      //     swipeEnabled: true,
-      //   }}
-      //   backBehavior="history"
-      //   defaultStatus="open" 
-        >
-{/* 
-        <Drawer.Screen 
-        name="home" 
-        options={{ 
-          drawerLabel:"home",
-          title:'overview'
-          }} />
-          
-        <Drawer.Screen 
-        name="blah" 
-        options={{ 
-          drawerLabel:"Blah",
-          headerShown: false,
-          title:'overview'
-          }} /> */}
+      <Drawer>
         {/* <Drawer.Screen name="details" options={{ headerShown: false }} component={Details} /> */}
       {/* <StatusBar barStyle="light-content" style="dark" /> */}
     </Drawer>

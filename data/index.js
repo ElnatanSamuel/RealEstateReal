@@ -1,5 +1,9 @@
-const mapData = [
+import image from "../constants/image";
+
+
+const houseData = [
     {
+      "image": image.detailimg,
       "house_id": "1",
       "latitude": 9.0248,
       "longitude": 38.7469,
@@ -12,6 +16,7 @@ const mapData = [
       "sqft": 1500
     },
     {
+      "image": image.detailimg,
       "house_id": "2",
       "latitude": 9.0148,
       "longitude": 38.7545,
@@ -24,6 +29,7 @@ const mapData = [
       "sqft": 2800
     },
     {
+      "image": image.detailimg,
       "house_id": "3",
       "latitude": 9.0443,
       "longitude": 38.7407,
@@ -36,6 +42,7 @@ const mapData = [
       "sqft": 2000
     },
     {
+      "image": image.detailimg,
       "house_id": "4",
       "latitude": 9.0230,
       "longitude": 38.7603,
@@ -48,6 +55,7 @@ const mapData = [
       "sqft": 1800
     },
     {
+      "image": image.detailimg,
       "house_id": "5",
       "latitude": 9.0364,
       "longitude": 38.7456,
@@ -60,6 +68,7 @@ const mapData = [
       "sqft": 4000
     },
     {
+      "image": image.detailimg,
       "house_id": "6",
       "latitude": 9.0287,
       "longitude": 38.7652,
@@ -72,6 +81,7 @@ const mapData = [
       "sqft": 3200
     },
     {
+      "image": image.detailimg,
       "house_id": "7",
       "latitude": 9.0312,
       "longitude": 38.7558,
@@ -84,6 +94,7 @@ const mapData = [
       "sqft": 1800
     },
     {
+      "image": image.detailimg,
       "house_id": "8",
       "latitude": 9.0401,
       "longitude": 38.7511,
@@ -96,6 +107,7 @@ const mapData = [
       "sqft": 2200
     },
     {
+      "image": image.detailimg,
       "house_id": "9",
       "latitude": 9.0169,
       "longitude": 38.7426,
@@ -108,6 +120,7 @@ const mapData = [
       "sqft": 1600
     },
     {
+      "image": image.detailimg,
       "house_id": "10",
       "latitude": 9.0485,
       "longitude": 38.7549,
@@ -126,6 +139,7 @@ const categMapData = [
       "type": "5",
       "data": [
         {
+          "image": image.detailimg,
           "house_id": "1",
           "latitude": 9.0364,
           "longitude": 38.7456,
@@ -138,6 +152,7 @@ const categMapData = [
           "sqft": 4000
         },
         {
+          "image": image.detailimg,
           "house_id": "2",
           "latitude": 9.0364,
           "longitude": 38.7456,
@@ -150,6 +165,7 @@ const categMapData = [
           "sqft": 4000
         },
         {
+          "image": image.detailimg,
           "house_id": "3",
           "latitude": 9.0364,
           "longitude": 38.7456,
@@ -162,6 +178,7 @@ const categMapData = [
           "sqft": 4000
         },
         {
+          "image": image.detailimg,
           "house_id": "4",
           "latitude": 9.0364,
           "longitude": 38.7456,
@@ -174,6 +191,7 @@ const categMapData = [
           "sqft": 4000
         },
         {
+          "image": image.detailimg,
           "house_id": "5",
           "latitude": 9.0364,
           "longitude": 38.7456,
@@ -186,6 +204,7 @@ const categMapData = [
           "sqft": 4000
         },
         {
+          "image": image.detailimg,
           "house_id": "6",
           "latitude": 9.0364,
           "longitude": 38.7456,
@@ -198,6 +217,7 @@ const categMapData = [
           "sqft": 4000
         },
         {
+          "image": image.detailimg,
           "house_id": "7",
           "latitude": 9.0485,
           "longitude": 38.7549,
@@ -216,6 +236,7 @@ const categMapData = [
       
       "data": [
         {
+          "image": image.detailimg,
           "house_id": "1",
           "latitude": 9.0364,
           "longitude": 38.7456,
@@ -228,6 +249,7 @@ const categMapData = [
           "sqft": 4000
         },
         {
+          "image": image.detailimg,
           "house_id": "2",
           "latitude": 9.0364,
           "longitude": 38.7456,
@@ -240,6 +262,7 @@ const categMapData = [
           "sqft": 4000
         },
         {
+          "image": image.detailimg,
           "house_id": "3",
           "latitude": 9.0364,
           "longitude": 38.7456,
@@ -252,6 +275,7 @@ const categMapData = [
           "sqft": 4000
         },
         {
+          "image": image.detailimg,
           "house_id": "4",
           "latitude": 9.0364,
           "longitude": 38.7456,
@@ -264,6 +288,7 @@ const categMapData = [
           "sqft": 4000
         },
         {
+          "image": image.detailimg,
           "house_id": "5",
           "latitude": 9.0364,
           "longitude": 38.7456,
@@ -276,6 +301,7 @@ const categMapData = [
           "sqft": 4000
         },
         {
+          "image": image.detailimg,
           "house_id": "6",
           "latitude": 9.0364,
           "longitude": 38.7456,
@@ -288,6 +314,7 @@ const categMapData = [
           "sqft": 4000
         },
         {
+          "image": image.detailimg,
           "house_id": "7",
           "latitude": 9.0485,
           "longitude": 38.7549,
@@ -303,5 +330,33 @@ const categMapData = [
     }
 ]
 
-export {mapData, categMapData}
+const roomData = [
+  {
+    image: image.detailimg,
+    title: "Bedroom",
+    index: 1,
+  },
+  {
+    image: image.detailimg,
+    title: "Bedroom",
+    index: 2,
+  },
+  {
+    image: image.detailimg,
+    title: "Bedroom",
+    index: 3,
+  },
+  {
+    image: image.detailimg,
+    title: "Bedroom",
+    index: 4,
+  },
+  {
+    image: image.detailimg,
+    title: "Bedroom",
+    index: 5,
+  },
+];
+
+export {houseData, categMapData, roomData}
   
