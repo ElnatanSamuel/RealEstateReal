@@ -4,11 +4,11 @@ import React from "react";
 import HouseCard from "../../components/HouseCard";
 
 import { useSelector } from "react-redux";
-import {selectSaved} from "../../slices/houseSlice";
+import {selectHouseData} from "../../slices/houseSlice";
 
 const Home = () => {
 
-  const saved = useSelector(selectSaved)
+  const houseData = useSelector(selectHouseData)
 
   return (
 
@@ -18,7 +18,7 @@ const Home = () => {
     decelerationRate="fast"
     vertical={true}
     showsVerticalScrollIndicator={false} >
-    {saved.map((room, index) => (
+    {houseData.map((room, index) => (
       <HouseCard room={room} key={index} />
     ))}
   </ScrollView>
