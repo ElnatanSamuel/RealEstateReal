@@ -136,6 +136,7 @@ import image from "../constants/image";
 
 const houseData = [{
     "houseId": "001",
+    "image": image.detailimg,
     "address": "123 Main St, City, Country",
     "price": 250000,
     "propertyType": "townhouse",
@@ -177,6 +178,7 @@ const houseData = [{
   },
   {
     "houseId": "002",
+    "image": image.detailimg,
     "address": "456 Elm St, City, Country",
     "price": 1800,
     "propertyType": "apartment",
@@ -218,6 +220,7 @@ const houseData = [{
   },
   {
     "houseId": "003",
+    "image": image.detailimg,
     "address": "789 Oak St, City, Country",
     "price": 300000,
     "propertyType": "condominium",
@@ -259,6 +262,7 @@ const houseData = [{
   },
   {
     "houseId": "004",
+    "image": image.detailimg,
     "address": "321 Pine St, City, Country",
     "price": 500000,
     "propertyType": "house",
@@ -300,6 +304,7 @@ const houseData = [{
   },
   {
     "houseId": "005",
+    "image": image.detailimg,
     "address": "246 Maple St, City, Country",
     "price": 180000,
     "propertyType": "apartment",
@@ -341,6 +346,7 @@ const houseData = [{
   },
   {
     "houseId": "006",
+    "image": image.detailimg,
     "address": "789 Cedar St, City, Country",
     "price": 400000,
     "propertyType": "townhouse",
@@ -382,6 +388,7 @@ const houseData = [{
   },
   {
     "houseId": "007",
+    "image": image.detailimg,
     "address": "1010 Walnut St, City, Country",
     "price": 600000,
     "propertyType": "house",
@@ -423,6 +430,7 @@ const houseData = [{
   },
   {
     "houseId": "008",
+    "image": image.detailimg,
     "address": "1313 Oak St, City, Country",
     "price": 350000,
     "propertyType": "condominium",
@@ -464,6 +472,7 @@ const houseData = [{
   },
   {
     "houseId": "009",
+    "image": image.detailimg,
     "address": "1717 Maple St, City, Country",
     "price": 200000,
     "propertyType": "apartment",
@@ -505,6 +514,7 @@ const houseData = [{
   },
   {
     "houseId": "010",
+    "image": image.detailimg,
     "address": "2121 Cedar St, City, Country",
     "price": 450000,
     "propertyType": "house",

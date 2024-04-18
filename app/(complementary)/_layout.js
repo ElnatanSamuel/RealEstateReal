@@ -6,6 +6,8 @@ const ComplementaryLayout = () => {
   return (
     <Stack>
       <Stack.Screen name="details" options={{ headerShown: false }} />
+      {/* <Stack.Screen name="profile" options={{ headerShown: false }} /> */}
+      {/* <Stack.Screen name="map" options={{ headerShown: false }} /> */}
     </Stack>
   );
 };

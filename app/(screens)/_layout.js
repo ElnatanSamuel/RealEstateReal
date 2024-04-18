@@ -1,26 +1,37 @@
 import {GestureHandlerRootView} from 'react-native-gesture-handler'
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { Stack } from "expo-router";
 import { Drawer } from "expo-router/drawer"
-import Home from "./home"
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { createStackNavigator  } from '@react-navigation/stack';
-
-
-
-// const Drawer = createDrawerNavigator();
-// const Stack = createStackNavigator();
-
-
 
 const ScreensLayout = () => {
   return (
     <GestureHandlerRootView className="flex-1">
       <Drawer>
-        {/* <Drawer.Screen name="details" options={{ headerShown: false }} component={Details} /> */}
+        <Drawer.Screen name="index"   
+        options={{
+          drawerLabel:"Search",
+          title:"Search"
+        }}
+        />
+        <Drawer.Screen name="add listing"
+        options={{
+          drawerLabel:"Add listing",
+          title:"Add listing"
+        }}
+        />
+        <Drawer.Screen name="saved"  
+        options={{
+          drawerLabel:"Saved",
+          title:"Saved"
+
+        }}
+        />
+        <Drawer.Screen name="settings"  
+        options={{
+          drawerLabel:"Settings",
+          title:"Settings"
+        }}
+        />
+        {/* <Drawer.Screen name="details"  component={Details} /> */}
       {/* <StatusBar barStyle="light-content" style="dark" /> */}
     </Drawer>
     </GestureHandlerRootView>

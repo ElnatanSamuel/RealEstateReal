@@ -5,6 +5,7 @@ import {
   Dimensions,
   Image,
   TouchableOpacity,
+  Button,
 } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -12,6 +13,7 @@ import image from "../../constants/image";
 import CarouselRoom from "../../components/CarouselRoom";
 import { StatusBar } from "expo-status-bar";
 import HorizontalScrollRooms from "../../components/HorizontalScrollRooms";
+import { Link } from "expo-router";
 
 const Details = () => {
   const width = Dimensions.get("window").width;
@@ -78,44 +80,28 @@ const Details = () => {
           </View>
 
           <View className="mt-6">
+            <Link className="w-full border" href="/map">
             <Image
               className="w-full h-[300px]"
               source={image.basemap}
               resizeMode="cover"
-            />
+              />
+              </Link>
 
-            <View className="px-2 flex-row items-center opacity-90 justify-center gap-6">
-              <View className="items-center">
-                <Image
-                  source={image.routedirection}
-                  className="w-14 h-14"
-                  resizeMode="contain"
-                />
-                <Text className="text-white font-bold">Get Direction</Text>
-              </View>
-              <View className="items-center">
-                <Image
-                  source={image.routedirection}
-                  className="w-14 h-14"
-                  resizeMode="contain"
-                />
-                <Text className="text-white font-bold">Get Direction</Text>
-              </View>
-              <View className="items-center">
-                <Image
-                  source={image.routedirection}
-                  className="w-14 h-14"
-                  resizeMode="contain"
-                />
-                <Text className="text-white font-bold">Get Direction</Text>
-              </View>
-            </View>
-            <View className="items-center justify-center">
-              <TouchableOpacity className="bg-white text-black p-4 mt-4 rounded-2xl">
+            <View className="items-center justify-center flex-row">
+
+              <TouchableOpacity className="bg-white flex-row justify-evenly text-black p-4 mt-4 rounded-2xl inline">
+                <Text className="text-black font-bold">
+                  Get Directions
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity className="bg-white text-black p-4 mt-4 rounded-2xl inline">
                 <Text className="text-black font-bold">
                   Request A Private Showing
                 </Text>
               </TouchableOpacity>
+
             </View>
           </View>
 
