@@ -9,20 +9,20 @@ const HouseCard = ({house}) => {
 
     <View className="relative w-screen border">
         
-        <Link href="/details">
+        {/* <Link href= "/details"> */}
           <Image
             source={house.image}
             className="w-full h-auto"
           />
-        </Link>
+        {/* </Link> */}
 
       
-        <View className="border w-full">
+        <View className="cborder w-full">
 
           <View className="flex-row gap-5">
-            <Link href="/profile" className="bg-black w-10 h-full" />
+            <Link href="/profile" className="bg-white border--b-4 w-10 h-full" />
 
-            <View>
+            <Link href="/details">
               <View className="flex-row items-center gap-2">
                 <Text className="p-1 bg-green-600 rounded-full w-1 h-1"></Text>
                 <Text className=" text-green-500 text-xs ">
@@ -38,7 +38,7 @@ const HouseCard = ({house}) => {
                   {house.bedrooms}BD . {house.bathrooms}BA . {house.houseSize}SQFT
                 </Text>
               </View>
-            </View>
+            </Link>
           
           </View>
 
