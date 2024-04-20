@@ -1,10 +1,13 @@
 import { Button, ScrollView, Text, View } from "react-native";
 import React from "react";
 
-import HouseCard from "../../components/HouseCard";
+import HouseCard from "../../../components/HouseCard";
 
 import { useSelector } from "react-redux";
-import {selectHouseData} from "../../slices/houseSlice";
+import {selectHouseData} from "../../../slices/houseSlice";
+
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+
 
 const Home = () => {
 
@@ -23,8 +26,9 @@ const Home = () => {
             
           <View className="flex-row items-center justify-center px-5">
    
-            <View className="rounded-2xl p-3 border ml-5 px-4 w-fit h-auto">
-              <Text className="capitalize">Filter</Text>
+            <View className="flex-row items-center justify-between rounded-2xl p-3 border ml-5 px-4 w-fit h-auto">
+            <FontAwesome size={28} name="sliders" className="ml-3" />
+              <Text className="capitalize">Search</Text>
             </View>
 
               {filters.map((filter, index) => (
@@ -32,9 +36,8 @@ const Home = () => {
                   <Text className="capitalize">{filter}</Text>
                 </View>
               ))}
-            
-          </View>
-          
+              
+          </View>          
           </ScrollView>
       </View>
 

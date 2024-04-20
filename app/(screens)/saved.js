@@ -11,8 +11,6 @@ const Saved = () => {
   const saved = useSelector(selectSaved)
 
   return (
-
-
     <ScrollView
     className="flex-1 gap-0"
     decelerationRate="fast"

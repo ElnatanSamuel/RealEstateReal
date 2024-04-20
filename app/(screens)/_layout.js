@@ -6,7 +6,13 @@ const ScreensLayout = () => {
   return (
     <GestureHandlerRootView className="flex-1">
       <Drawer>
-        <Drawer.Screen name="index"   
+      <Drawer.Screen name="home"   
+        options={{
+          drawerLabel:"Home",
+          title:"Home"
+        }}
+        />
+      <Drawer.Screen name="(tabs)"   
         options={{
           drawerLabel:"Search",
           title:"Search"

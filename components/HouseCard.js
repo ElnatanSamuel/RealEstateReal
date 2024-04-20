@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text,Image } from "react-native";
 import { Link } from "expo-router";
 import { ScrollView } from 'react-native-gesture-handler';
+import icon from "../constants/icon";
 
 const HouseCard = ({house}) => {
 
@@ -10,13 +11,21 @@ const HouseCard = ({house}) => {
     <View className="relative w-screen border">
         
         {/* <Link href= "/details"> */}
+        <View className="relative">
+
           <Image
             source={house.image}
             className="w-full h-auto"
+            />
+
+        <Image
+          source={icon.bookmarkicon}
+          className="w-6 h-6 absolute bottom-5 right-5"
+          resizeMode="contain"
           />
+        </View>
         {/* </Link> */}
 
-      
         <View className="cborder w-full">
 
           <View className="flex-row gap-5">

@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Button } from "react-native";
 import React from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import MapView, { Marker } from "react-native-maps";
@@ -53,6 +53,8 @@ export default function MapScreen() {
 
       </MapView>
        */}
+
+       <Button title="Get Directions"/>
 
       
       {/* <View className="flex-row justify-between px-5 pt-10 mb-5">

@@ -44,6 +44,7 @@ const Details = () => {
       index: 5,
     },
   ];
+  
   return (
     <SafeAreaView>
       <ScrollView>
