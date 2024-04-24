@@ -553,207 +553,204 @@ const houseData = [{
       "phone": "+9988776655"
     },
     "listedFor": "sell"
-  }]
-
-
-const categMapData = [
-    {
-      "type": "5",
-      "data": [
-        {
-          "image": image.detailimg,
-          "house_id": "1",
-          "latitude": 9.0364,
-          "longitude": 38.7456,
-          "address": "Sample Address 5, Addis Ababa",
-          "img": "https://example.com/house_image5.jpg",
-          "description": "Luxurious penthouse with panoramic city views",
-          "price": 750000,
-          "bedrooms": 5,
-          "bathrooms": 4,
-          "sqft": 4000
-        },
-        {
-          "image": image.detailimg,
-          "house_id": "2",
-          "latitude": 9.0364,
-          "longitude": 38.7456,
-          "address": "Sample Address 5, Addis Ababa",
-          "img": "https://example.com/house_image5.jpg",
-          "description": "Luxurious penthouse with panoramic city views",
-          "price": 750000,
-          "bedrooms": 5,
-          "bathrooms": 4,
-          "sqft": 4000
-        },
-        {
-          "image": image.detailimg,
-          "house_id": "3",
-          "latitude": 9.0364,
-          "longitude": 38.7456,
-          "address": "Sample Address 5, Addis Ababa",
-          "img": "https://example.com/house_image5.jpg",
-          "description": "Luxurious penthouse with panoramic city views",
-          "price": 750000,
-          "bedrooms": 5,
-          "bathrooms": 4,
-          "sqft": 4000
-        },
-        {
-          "image": image.detailimg,
-          "house_id": "4",
-          "latitude": 9.0364,
-          "longitude": 38.7456,
-          "address": "Sample Address 5, Addis Ababa",
-          "img": "https://example.com/house_image5.jpg",
-          "description": "Luxurious penthouse with panoramic city views",
-          "price": 750000,
-          "bedrooms": 5,
-          "bathrooms": 4,
-          "sqft": 4000
-        },
-        {
-          "image": image.detailimg,
-          "house_id": "5",
-          "latitude": 9.0364,
-          "longitude": 38.7456,
-          "address": "Sample Address 5, Addis Ababa",
-          "img": "https://example.com/house_image5.jpg",
-          "description": "Luxurious penthouse with panoramic city views",
-          "price": 750000,
-          "bedrooms": 5,
-          "bathrooms": 4,
-          "sqft": 4000
-        },
-        {
-          "image": image.detailimg,
-          "house_id": "6",
-          "latitude": 9.0364,
-          "longitude": 38.7456,
-          "address": "Sample Address 5, Addis Ababa",
-          "img": "https://example.com/house_image5.jpg",
-          "description": "Luxurious penthouse with panoramic city views",
-          "price": 750000,
-          "bedrooms": 5,
-          "bathrooms": 4,
-          "sqft": 4000
-        },
-        {
-          "image": image.detailimg,
-          "house_id": "7",
-          "latitude": 9.0485,
-          "longitude": 38.7549,
-          "address": "Sample Address 10, Addis Ababa",
-          "img": "https://example.com/house_image10.jpg",
-          "description": "Sleek modernist villa with infinity pool",
-          "price": 980000,
-          "bedrooms": 6,
-          "bathrooms": 5,
-          "sqft": 5000
-        }
-      ]
-    },
-    {
-      "type": "10",
-      
-      "data": [
-        {
-          "image": image.detailimg,
-          "house_id": "1",
-          "latitude": 9.0364,
-          "longitude": 38.7456,
-          "address": "Sample Address 5, Addis Ababa",
-          "img": "https://example.com/house_image5.jpg",
-          "description": "Luxurious penthouse with panoramic city views",
-          "price": 750000,
-          "bedrooms": 5,
-          "bathrooms": 4,
-          "sqft": 4000
-        },
-        {
-          "image": image.detailimg,
-          "house_id": "2",
-          "latitude": 9.0364,
-          "longitude": 38.7456,
-          "address": "Sample Address 5, Addis Ababa",
-          "img": "https://example.com/house_image5.jpg",
-          "description": "Luxurious penthouse with panoramic city views",
-          "price": 750000,
-          "bedrooms": 5,
-          "bathrooms": 4,
-          "sqft": 4000
-        },
-        {
-          "image": image.detailimg,
-          "house_id": "3",
-          "latitude": 9.0364,
-          "longitude": 38.7456,
-          "address": "Sample Address 5, Addis Ababa",
-          "img": "https://example.com/house_image5.jpg",
-          "description": "Luxurious penthouse with panoramic city views",
-          "price": 750000,
-          "bedrooms": 5,
-          "bathrooms": 4,
-          "sqft": 4000
-        },
-        {
-          "image": image.detailimg,
-          "house_id": "4",
-          "latitude": 9.0364,
-          "longitude": 38.7456,
-          "address": "Sample Address 5, Addis Ababa",
-          "img": "https://example.com/house_image5.jpg",
-          "description": "Luxurious penthouse with panoramic city views",
-          "price": 750000,
-          "bedrooms": 5,
-          "bathrooms": 4,
-          "sqft": 4000
-        },
-        {
-          "image": image.detailimg,
-          "house_id": "5",
-          "latitude": 9.0364,
-          "longitude": 38.7456,
-          "address": "Sample Address 5, Addis Ababa",
-          "img": "https://example.com/house_image5.jpg",
-          "description": "Luxurious penthouse with panoramic city views",
-          "price": 750000,
-          "bedrooms": 5,
-          "bathrooms": 4,
-          "sqft": 4000
-        },
-        {
-          "image": image.detailimg,
-          "house_id": "6",
-          "latitude": 9.0364,
-          "longitude": 38.7456,
-          "address": "Sample Address 5, Addis Ababa",
-          "img": "https://example.com/house_image5.jpg",
-          "description": "Luxurious penthouse with panoramic city views",
-          "price": 750000,
-          "bedrooms": 5,
-          "bathrooms": 4,
-          "sqft": 4000
-        },
-        {
-          "image": image.detailimg,
-          "house_id": "7",
-          "latitude": 9.0485,
-          "longitude": 38.7549,
-          "address": "Sample Address 10, Addis Ababa",
-          "img": "https://example.com/house_image10.jpg",
-          "description": "Sleek modernist villa with infinity pool",
-          "price": 980000,
-          "bedrooms": 6,
-          "bathrooms": 5,
-          "sqft": 5000
-        }
-      ]
-    }
+  }
 ]
 
-const roomData = [
+
+const categMapData = [{
+    "type": "5",
+    "data": [{
+        "image": image.detailimg,
+        "house_id": "1",
+        "latitude": 9.0364,
+        "longitude": 38.7456,
+        "address": "Sample Address 5, Addis Ababa",
+        "img": "https://example.com/house_image5.jpg",
+        "description": "Luxurious penthouse with panoramic city views",
+        "price": 750000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "sqft": 4000
+      },
+      {
+        "image": image.detailimg,
+        "house_id": "2",
+        "latitude": 9.0364,
+        "longitude": 38.7456,
+        "address": "Sample Address 5, Addis Ababa",
+        "img": "https://example.com/house_image5.jpg",
+        "description": "Luxurious penthouse with panoramic city views",
+        "price": 750000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "sqft": 4000
+      },
+      {
+        "image": image.detailimg,
+        "house_id": "3",
+        "latitude": 9.0364,
+        "longitude": 38.7456,
+        "address": "Sample Address 5, Addis Ababa",
+        "img": "https://example.com/house_image5.jpg",
+        "description": "Luxurious penthouse with panoramic city views",
+        "price": 750000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "sqft": 4000
+      },
+      {
+        "image": image.detailimg,
+        "house_id": "4",
+        "latitude": 9.0364,
+        "longitude": 38.7456,
+        "address": "Sample Address 5, Addis Ababa",
+        "img": "https://example.com/house_image5.jpg",
+        "description": "Luxurious penthouse with panoramic city views",
+        "price": 750000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "sqft": 4000
+      },
+      {
+        "image": image.detailimg,
+        "house_id": "5",
+        "latitude": 9.0364,
+        "longitude": 38.7456,
+        "address": "Sample Address 5, Addis Ababa",
+        "img": "https://example.com/house_image5.jpg",
+        "description": "Luxurious penthouse with panoramic city views",
+        "price": 750000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "sqft": 4000
+      },
+      {
+        "image": image.detailimg,
+        "house_id": "6",
+        "latitude": 9.0364,
+        "longitude": 38.7456,
+        "address": "Sample Address 5, Addis Ababa",
+        "img": "https://example.com/house_image5.jpg",
+        "description": "Luxurious penthouse with panoramic city views",
+        "price": 750000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "sqft": 4000
+      },
+      {
+        "image": image.detailimg,
+        "house_id": "7",
+        "latitude": 9.0485,
+        "longitude": 38.7549,
+        "address": "Sample Address 10, Addis Ababa",
+        "img": "https://example.com/house_image10.jpg",
+        "description": "Sleek modernist villa with infinity pool",
+        "price": 980000,
+        "bedrooms": 6,
+        "bathrooms": 5,
+        "sqft": 5000
+      }
+    ]
+  },
   {
+    "type": "10",
+
+    "data": [{
+        "image": image.detailimg,
+        "house_id": "1",
+        "latitude": 9.0364,
+        "longitude": 38.7456,
+        "address": "Sample Address 5, Addis Ababa",
+        "img": "https://example.com/house_image5.jpg",
+        "description": "Luxurious penthouse with panoramic city views",
+        "price": 750000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "sqft": 4000
+      },
+      {
+        "image": image.detailimg,
+        "house_id": "2",
+        "latitude": 9.0364,
+        "longitude": 38.7456,
+        "address": "Sample Address 5, Addis Ababa",
+        "img": "https://example.com/house_image5.jpg",
+        "description": "Luxurious penthouse with panoramic city views",
+        "price": 750000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "sqft": 4000
+      },
+      {
+        "image": image.detailimg,
+        "house_id": "3",
+        "latitude": 9.0364,
+        "longitude": 38.7456,
+        "address": "Sample Address 5, Addis Ababa",
+        "img": "https://example.com/house_image5.jpg",
+        "description": "Luxurious penthouse with panoramic city views",
+        "price": 750000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "sqft": 4000
+      },
+      {
+        "image": image.detailimg,
+        "house_id": "4",
+        "latitude": 9.0364,
+        "longitude": 38.7456,
+        "address": "Sample Address 5, Addis Ababa",
+        "img": "https://example.com/house_image5.jpg",
+        "description": "Luxurious penthouse with panoramic city views",
+        "price": 750000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "sqft": 4000
+      },
+      {
+        "image": image.detailimg,
+        "house_id": "5",
+        "latitude": 9.0364,
+        "longitude": 38.7456,
+        "address": "Sample Address 5, Addis Ababa",
+        "img": "https://example.com/house_image5.jpg",
+        "description": "Luxurious penthouse with panoramic city views",
+        "price": 750000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "sqft": 4000
+      },
+      {
+        "image": image.detailimg,
+        "house_id": "6",
+        "latitude": 9.0364,
+        "longitude": 38.7456,
+        "address": "Sample Address 5, Addis Ababa",
+        "img": "https://example.com/house_image5.jpg",
+        "description": "Luxurious penthouse with panoramic city views",
+        "price": 750000,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "sqft": 4000
+      },
+      {
+        "image": image.detailimg,
+        "house_id": "7",
+        "latitude": 9.0485,
+        "longitude": 38.7549,
+        "address": "Sample Address 10, Addis Ababa",
+        "img": "https://example.com/house_image10.jpg",
+        "description": "Sleek modernist villa with infinity pool",
+        "price": 980000,
+        "bedrooms": 6,
+        "bathrooms": 5,
+        "sqft": 5000
+      }
+    ]
+  }
+]
+
+const roomData = [{
     image: image.detailimg,
     title: "Bedroom",
     index: 1,
@@ -780,12 +777,127 @@ const roomData = [
   },
 ];
 
-const rooms = [
+const rooms = [{
+  "house_id": 1,
+  "room_id": 1
+}]
+
+const mapData = [
   {
-    "house_id": 1,
-    "room_id": 1
+    "Akaki kality ":
+    {
+      "Ethio Korea School": [8.907175323036451, 38.755183395333226],
+      "Gelan secondary school": [8.870892080453872, 38.76984334572811],
+      "Tulu Dimtu square": [8.87554008411877, 38.819848293008825],
+      "Nega Bonger Hotel": [8.954156050151342, 38.761235748187104],
+      "Koye Feche Square": [8.902138520810727, 38.81529292850113],
+    }
+  },
+
+  {
+    "Addis Ketema":
+     {
+      "GIRUM HOSPITAL": [9.047060499355457, 38.72003472327677],
+      "Abebe Bikila Stadium": [9.044186985820847, 38.72430362091417],
+      "Radical School | Amanuel": [9.022793484201715, 38.720610049782906],
+      "Merab Hotel | Merkato": [9.030070489413037, 38.737398861888956],
+      "Pastor Square": [9.046594674143478, 38.7319114931008],
+    }
+  },
+
+  {
+    "Arada":
+    {
+      "Emperor Tewodros II Square": [9.027276574199929, 38.75166259186012],
+      "Unity Park Zoo": [9.025158082374967, 38.76219018870801],
+      "Embassy of India": [9.030832313496683, 38.77564050673658],
+      "6 Kilo Yekatit 12 Square": [9.04430774961368, 38.76111440841991],
+      "Enkulal Fabrica Square": [9.04908223967625, 38.73783566177834],
+      "Gojam berenda": [9.036066535011091, 38.7401876898899],
+    }
+  },
+
+  {
+    "Bole":
+    {
+      "GAST Entertainment": [9.021952180542858, 38.841917110373444],
+      "Century Mall Gurd Shola": [9.020678761686622, 38.814229899260276],
+      "Bole Bulbula": [8.951373125054168, 38.77410268269601],
+      "Capital Hotel and Spa": [9.013741321027004, 38.779971525354895],
+      "Ayat Square": [9.02157294762088, 38.875846582604964],
+      "Summit Cherkos Condominium": [8.99489583542933, 38.86079269323679],
+    }
+  },
+
+  {
+    "Gullele":
+    {
+      "St.Paulos Hospital": [9.048047041983217, 38.72772738894602],
+      "Wingate Square": [9.057124668699267, 38.71348050152937],
+      "EBC | Shegole": [9.06598890089599, 38.71416406430201],
+      "Entoto Park Dilber (Addisu Gebeya Ber)": [9.075270955885628, 38.74395069606441],
+      "AAU Registrar Office": [9.044645910686853, 38.75805602933758],
+      "እማማ ፊሽካ ምግብ ቤት": [9.053674154674631, 38.7435635561261],
+    }
+  },
+
+  {
+    "Kirkos": 
+    {
+      "Gotera Square": [8.981182454320995, 38.75970480473864],
+      "Beg Tera | Kera": [8.98773080515628, 38.74554023631052],
+      "Pushkin Square | Sarbet": [8.994624327199896, 38.738623382245414],
+      "Mexico Roundabout": [9.010615660942165, 38.7445134258537],
+      "Ethiopian National Theatre": [9.016118248525292, 38.75236931277079],
+      "Ethiopian Science Museum": [9.021650509247538, 38.76242271136863],
+      "Gorgorios adebabay": [8.983768663058251, 38.765809460115285],
+    }
+  },
+
+  {
+    "Kolfe keranio":
+    {
+      "Dangote Cement Ethiopia - Furi Depo": [8.950821702978846, 38.672417131429626],
+      "Embassy of the Netherlands": [9.019687280174459, 38.71562248865414],
+      "Koshe": [8.976395637770432, 38.71228588009704],
+    }
+  },
+
+  {
+    "Lideta":
+    {
+      "Addis Ababa Golf Club": [9.00104198217982, 38.72434036241804],
+      "Armed Forces Hospital": [9.012549751850218, 38.72441273162146],
+      "Abinet square": [9.020554940653476, 38.73328519044071],
+    }
+  },
+  {
+    "Nifas silk lafto":
+      {
+      "Embassy of the Republic of Korea": [8.994713179355053, 38.72152433716736],
+      "Embassy of Canada": [8.995426112733622, 38.73586800600609],
+      "Total Haile Garment": [8.92187690502329, 38.726373422766926],
+    }
+  },
+  {
+    "Yeka":
+     {
+      "Intoto": [9.070676769695527, 38.773761760563445],
+      "ፈረንሳይ ለጋሲዮን": [9.0599695874334, 38.798242364185086],
+      "Ayat Tafo condominium square": [9.04591705882844, 38.87459117780343],
+      "School Of Tomorrow": [9.021531251669668, 38.85710255628963],
+      "Top Ten hotel": [9.019482790401678, 38.82182106130031],
+      "Zefmesh Grand Mall": [9.020690238661283, 38.8003190809531],
+      "Megenagna": [9.018390230270485, 38.795978642355294],
+      "Menelik II Referal Hospital": [9.038567191428228, 38.77432940326189],
+      "Embassy of France": [9.0542659679942, 38.770841903984135],
+    }
   }
 ]
 
-export {houseData, categMapData, roomData}
-  
+export {
+  houseData,
+  categMapData,
+  roomData,
+  mapData
+}
