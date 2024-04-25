@@ -142,9 +142,7 @@ const houseData = [{
     "propertyType": "townhouse",
     "bedrooms": 3,
     "bathrooms": 2,
-    "lotSize": 6000,
     "houseSize": 1800,
-    "pets": "dogs",
     "houseAge": 19,
     "location": {
       "coords": {
@@ -184,9 +182,7 @@ const houseData = [{
     "propertyType": "apartment",
     "bedrooms": 2,
     "bathrooms": 1,
-    "lotSize": 4000,
     "houseSize": 1200,
-    "pets": "none",
     "houseAge": 26,
     "location": {
       "coords": {
@@ -226,9 +222,7 @@ const houseData = [{
     "propertyType": "condominium",
     "bedrooms": 2,
     "bathrooms": 2.5,
-    "lotSize": 3500,
     "houseSize": 1600,
-    "pets": "cats",
     "houseAge": 8,
     "location": {
       "coords": {
@@ -268,9 +262,7 @@ const houseData = [{
     "propertyType": "house",
     "bedrooms": 4,
     "bathrooms": 3,
-    "lotSize": 8000,
     "houseSize": 2400,
-    "pets": "none",
     "houseAge": 15,
     "location": {
       "coords": {
@@ -310,9 +302,7 @@ const houseData = [{
     "propertyType": "apartment",
     "bedrooms": 1,
     "bathrooms": 1,
-    "lotSize": 2000,
     "houseSize": 900,
-    "pets": "cats",
     "houseAge": 10,
     "location": {
       "coords": {
@@ -352,9 +342,7 @@ const houseData = [{
     "propertyType": "townhouse",
     "bedrooms": 3,
     "bathrooms": 2.5,
-    "lotSize": 4500,
     "houseSize": 2000,
-    "pets": "dogs",
     "houseAge": 12,
     "location": {
       "coords": {
@@ -394,9 +382,7 @@ const houseData = [{
     "propertyType": "house",
     "bedrooms": 5,
     "bathrooms": 3.5,
-    "lotSize": 10000,
     "houseSize": 3000,
-    "pets": "none",
     "houseAge": 5,
     "location": {
       "coords": {
@@ -436,9 +422,7 @@ const houseData = [{
     "propertyType": "condominium",
     "bedrooms": 2,
     "bathrooms": 2,
-    "lotSize": 2500,
     "houseSize": 1400,
-    "pets": "none",
     "houseAge": 7,
     "location": {
       "coords": {
@@ -478,9 +462,7 @@ const houseData = [{
     "propertyType": "apartment",
     "bedrooms": 1,
     "bathrooms": 1,
-    "lotSize": 1500,
     "houseSize": 800,
-    "pets": "none",
     "houseAge": 3,
     "location": {
       "coords": {
@@ -520,9 +502,7 @@ const houseData = [{
     "propertyType": "house",
     "bedrooms": 4,
     "bathrooms": 2.5,
-    "lotSize": 6000,
     "houseSize": 2200,
-    "pets": "cats",
     "houseAge": 20,
     "location": {
       "coords": {

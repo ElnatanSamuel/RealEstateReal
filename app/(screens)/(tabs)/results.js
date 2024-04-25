@@ -1,32 +1,52 @@
-import { useState, useRef, useEffect } from "react";
 import {
-  Button,
-  View,
+  
   StyleSheet,
-  ScrollView,
   TextInput,
+  Button,
+  FlatList,
+  FlatListComponent,
+  RefreshControl,
+  ScrollView,
   Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
+import React, { useState, useRef } from "react";
+
+import HouseCard from "../../../components/HouseCard";
+import BottomSheet, {
+  BottomSheetScrollView,
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from "@gorhom/bottom-sheet";
+
+import { useSelector } from "react-redux";
+import { selectHouseData } from "../../../slices/houseSlice";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+
+// add listing import
+// import { useState, useRef, useEffect } from "react";
+// import {
+//   Button,
+//   View,
+//   StyleSheet,
+//   ScrollView,
+//   TextInput,
+//   Text,
+// } from "react-native";
 
 import * as ImagePicker from "expo-image-picker";
 import * as Location from "expo-location";
 import Checkbox from "expo-checkbox";
 
 import SegmentedControl from "@react-native-segmented-control/segmented-control";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
-import {
-  BottomSheetScrollView,
-  BottomSheetModal,
-  BottomSheetModalProvider,
-} from "@gorhom/bottom-sheet";
-import SurfaceAdd from "../../components/SurfaceAdd";
-import LabelInput from "../../components/LabelInput";
-import ScrollRoomNumber from "../../components/ScrollRoomNumber";
+import SurfaceAdd from "../../../components/SurfaceAdd";
+import LabelInput from "../../../components/LabelInput";
+import ScrollRoomNumber from "../../../components/ScrollRoomNumber";
 
-// import LabelInput from "../../components/LabelInput";
+const Home = () => {
 
-export default function ImagePickerExample() {
   const [image, setImage] = useState(null);
   const [price, setPrice] = useState(null);
   const [location, setLocation] = useState(null);
@@ -36,14 +56,9 @@ export default function ImagePickerExample() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isChecked, setChecked] = useState(false);
 
-  const [errorMsg, setErrorMsg] = useState(null);
-
-  const searchBottomSheetRef = useRef(null);
-
-  function handlePresentModal() {
-    searchBottomSheetRef.current?.present();
-    searchBottomSheetRef.current?.dismiss();
-  } 
+  const houseData = useSelector(selectHouseData);
+  const searchBottomSheetRef = useRef(null)
+  const optionsBottomSheetRef = useRef(null)
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -77,20 +92,111 @@ export default function ImagePickerExample() {
   const rooms = ["Bedroom", "Livingroom", "Kitchen", "Bathroom", "Diningroom"];
   const PropertyType = ["Any", "House", "Apartment", "Condo", "Real Estate"];
 
+
+  function handlePresentModal() {
+    searchBottomSheetRef.current?.present();
+    searchBottomSheetRef.current?.dismiss();
+  } 
+  
+  function handleOptionsPresentModal() {
+    optionsBottomSheetRef.current?.present();
+  }
+
+  const filters = [
+    "all filters",
+    "bedrooms",
+    "bathrooms",
+    "property type",
+    "price",
+  ];
+  const [selectedFilterStyle, setSelectedFilterStyle] =
+    useState("bg-secondary-200");
+  const [selectedFilterTextStyle, setSelectedFilterTextStyle] =
+    useState("text-black");
+  const [selectedFilter, setSelectedFilter] = useState("all filters");
+
+  const handleSelectedFilter = (filter) => {
+    setSelectedFilterStyle(filter);
+  };
+
   return (
-    <View className=" lex-1 text-5xl h-full bg-white">
+    <>
+      <View className="w-full bg-white h-fit py-4">
+        <ScrollView
+          className=""
+          decelerationRate="fast"
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+        >
+          <View className="flex-row items-center justify-center">
+            {filters.map((filter, index) => (
+              <TouchableOpacity
+                key={index}
+                onPress={()=>{handlePresentModal()}}
+                className={`rounded-2xl  p-3  ml-5 px-4 w-fit h-auto ${
+                  selectedFilter === filter ? selectedFilterStyle : null
+                }`}
+                // onPress={() => {
+                //   setSelectedFilter(filter);
+                // }}
+              >
+                <Text
+                  className={`capitalize font-bold ${
+                    selectedFilter === filter
+                      ? selectedFilterTextStyle
+                      : "text-gray-500"
+                  }`}
+                >
+                  {filter}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </ScrollView>
+      </View>
+
+      <ScrollView
+        className="flex-1 gap-0 bg-white"
+        decelerationRate="fast"
+        vertical={true}
+        showsVerticalScrollIndicator={false}
+      >
+        <FlatList
+          data={houseData}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => <HouseCard house={item} />}
+        />
+      </ScrollView>
+
+            {/* search modal  */}
+      <BottomSheetModalProvider>
+        <BottomSheetModal
+          className="h-full"
+          ref={searchBottomSheetRef}
+          snapPoints={["30%","50%","70%","100%"]}
+          enablePanDownToClose={true}
+          animateOnMount={true}
+        >
+          <BottomSheetScrollView
+            className="pt-5 h-full "
+            decelerationRate="fast"
+            vertical={true}
+            showsVerticalScrollIndicator={false}>
+          {/* begin */}
+
+          <View className=" lex-1 text-5xl h-full bg-white">
       <SegmentedControl
-        values={["Sell", "Lease"]}
+        values={["Buy", "Rent"]}
         selectedIndex={selectedIndex}
         onChange={(event) => {
           setSelectedIndex(event.nativeEvent.selectedSegmentIndex);
         }}
       />
 
-      <ScrollView className="px-2">
+      <ScrollView className="px-2 pb-10">
         <View className="flex-col  mt-4">
           {/* Image Picker */}
-          <View>
+          {/* <View>
             <Text className="text-2xl font-bold">Pick Your Images</Text>
             <ScrollView
               decelerationRate="fast"
@@ -103,24 +209,23 @@ export default function ImagePickerExample() {
                 ))}
               </View>
             </ScrollView>
-          </View>
+          </View> */}
 
           {/* sizes */}
           <View className="px-2">
             <View className="flex-row gap-x-4 mt-8">
-              {/* Homesize */}
+              {/* Price Min */}
               <View className="flex-1">
-                <LabelInput title="Home Size" customStyles="w-full" />
-              </View>
-              <View className="flex-1">
-                <LabelInput title="Lot Size" customStyles="w-full" />
+                <LabelInput title="Price Min" customStyles="w-full" />
               </View>
 
-              {/* Lotsize */}
+              <View className="flex-1">
+                <LabelInput title="Price Max" customStyles="w-full" />
+              </View>
+              {/* Price Max */}
             </View>
 
             {/* location */}
-
             <View className="flex-row items-end mt-4 gap-x-4 relative">
               <View className="flex-1">
                 <LabelInput title="Address" customStyles="w-full" />
@@ -143,41 +248,54 @@ export default function ImagePickerExample() {
 
             {/* bathroom */}
             <View className="mt-6">
-              <ScrollRoomNumber title="Bedrooms" />
+              <ScrollRoomNumber title="Bathrooms" />
             </View>
 
             {/* Price */}
-            <View className="flex-row gap-x-4 mt-4 items-center relative">
+            {/* <View className="flex-row gap-x-4 mt-4 items-center relative">
               <View className="flex-1">
                 <LabelInput title="Price" customStyles={"w-full"} />
               </View>
               <View className="absolute right-4 top-[55%]">
                 <Text className=" text-xl">ETB</Text>
               </View>
-            </View>
+            </View> */}
 
             {/* PropertyType */}
             <View className="mt-6">
-              <TouchableOpacity onPress={handlePresentModal} className="">
+              <TouchableOpacity onPress={handleOptionsPresentModal} className="">
                 <Text className="text-lg opacity-80">Property Type</Text>
                 <Text className="text-sm opacity-60">Any</Text>
               </TouchableOpacity>
             </View>
+
             {/* Features */}
             <View className="mt-6">
-              <TouchableOpacity onPress={handlePresentModal}>
+              <TouchableOpacity onPress={handleOptionsPresentModal}>
                 <Text className="text-lg opacity-80">Features</Text>
                 <Text className="text-sm opacity-60">Any</Text>
               </TouchableOpacity>
             </View>
+
+            
+            <TouchableOpacity
+                  className=" bg-black p-[17px] rounded-full mt-4 w-full items-center"
+                  onPress={handlePresentModal}
+                  title="">
+
+                  <Text className="text-white font-bold">Search</Text>
+            
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
-
+        {/* end */}
+        
+        {/* options bottom sheet */}
       <BottomSheetModalProvider>
         <BottomSheetModal
           className="h-full"
-          ref={searchBottomSheetRef}
+          ref={optionsBottomSheetRef}
           snapPoints={["53%,100%"]}
           enablePanDownToClose={true}
           animateOnMount={true}
@@ -212,7 +330,15 @@ export default function ImagePickerExample() {
         </BottomSheetModal>
       </BottomSheetModalProvider>
     </View>
-  );
-}
+  
+            
+          </BottomSheetScrollView>
+        </BottomSheetModal>
+      </BottomSheetModalProvider>
 
-const styles = StyleSheet.create({});
+
+    </>
+  );
+};
+
+export default Home;
