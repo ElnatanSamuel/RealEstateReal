@@ -13,7 +13,7 @@ import image from "../../constants/image";
 import CarouselRoom from "../../components/CarouselRoom";
 import { StatusBar } from "expo-status-bar";
 import HorizontalScrollRooms from "../../components/HorizontalScrollRooms";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
 const Details = () => {
   const width = Dimensions.get("window").width;
@@ -44,7 +44,7 @@ const Details = () => {
       index: 5,
     },
   ];
-  
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -81,20 +81,17 @@ const Details = () => {
           </View>
 
           <View className="mt-6">
-            <Link className="w-full border" href="/map">
-            <Image
-              className="w-full h-[300px]"
-              source={image.basemap}
-              resizeMode="cover"
+            <TouchableOpacity onPress={() => router.push("/map")}>
+              <Image
+                className="w-full h-[300px]"
+                source={image.basemap}
+                resizeMode="cover"
               />
-              </Link>
+            </TouchableOpacity>
 
             <View className="items-center justify-center flex-row">
-
               <TouchableOpacity className="bg-white flex-row justify-evenly text-black p-4 mt-4 rounded-2xl inline">
-                <Text className="text-black font-bold">
-                  Get Directions
-                </Text>
+                <Text className="text-black font-bold">Get Directions</Text>
               </TouchableOpacity>
 
               <TouchableOpacity className="bg-white text-black p-4 mt-4 rounded-2xl inline">
@@ -102,7 +99,6 @@ const Details = () => {
                   Request A Private Showing
                 </Text>
               </TouchableOpacity>
-
             </View>
           </View>
 

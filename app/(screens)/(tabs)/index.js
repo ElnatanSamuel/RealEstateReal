@@ -9,7 +9,7 @@ import {
   View,
 } from "react-native";
 import React, { useState } from "react";
-
+import { Link } from "expo-router";
 import HouseCard from "../../../components/HouseCard";
 
 import { useSelector } from "react-redux";
@@ -81,7 +81,12 @@ const Home = () => {
         <FlatList
           data={houseData}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => <HouseCard house={item} />}
+          renderItem={({ item }) => (
+            <Link href="/details">
+              {" "}
+              <HouseCard house={item} />
+            </Link>
+          )}
         />
       </ScrollView>
     </>

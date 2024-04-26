@@ -6,6 +6,7 @@ import {
   ScrollView,
   TextInput,
   Text,
+  Image,
 } from "react-native";
 
 import * as ImagePicker from "expo-image-picker";
@@ -27,7 +28,13 @@ import ScrollRoomNumber from "../../components/ScrollRoomNumber";
 // import LabelInput from "../../components/LabelInput";
 
 export default function ImagePickerExample() {
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState({
+    Bedroom: [],
+    Livingroom: [],
+    Kitchen: [],
+    Bathroom: [],
+    Diningroom: [],
+  });
   const [price, setPrice] = useState(null);
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState(null);
@@ -40,19 +47,33 @@ export default function ImagePickerExample() {
 
   const searchBottomSheetRef = useRef(null);
 
-  const pickImage = async () => {
+  const pickImage = async (room) => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
+      base64: true,
+      allowsMultipleSelection: true,
     });
 
-    console.log(result);
-
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      if (room === "Bedroom") {
+        setImage({ ...image, Bedroom: result.assets });
+      }
+      if (room === "Livingroom") {
+        setImage({ ...image, Livingroom: result.assets });
+      }
+      if (room === "Kitchen") {
+        setImage({ ...image, Kitchen: result.assets });
+      }
+      if (room === "Bathroom") {
+        setImage({ ...image, Bathroom: result.assets });
+      }
+      if (room === "Diningroom") {
+        setImage({ ...image, Diningroom: result.assets });
+      }
     }
   };
 
@@ -99,7 +120,11 @@ export default function ImagePickerExample() {
             >
               <View className="flex-row mt-2">
                 {rooms.map((room) => (
-                  <SurfaceAdd title={room} pickImage={pickImage} />
+                  <SurfaceAdd
+                    title={room}
+                    pickImage={() => pickImage(room)}
+                    image={image}
+                  />
                 ))}
               </View>
             </ScrollView>
@@ -143,7 +168,7 @@ export default function ImagePickerExample() {
 
             {/* bathroom */}
             <View className="mt-6">
-              <ScrollRoomNumber title="Bedrooms" />
+              <ScrollRoomNumber title="Bathroom" />
             </View>
 
             {/* Price */}
