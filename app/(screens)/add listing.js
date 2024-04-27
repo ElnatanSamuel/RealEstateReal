@@ -47,6 +47,16 @@ export default function ImagePickerExample() {
 
   const searchBottomSheetRef = useRef(null);
 
+  function handlePresentModal() {
+    searchBottomSheetRef.current?.present();
+    searchBottomSheetRef.current?.dismiss();
+  }
+
+  function handlePresentModal() {
+    searchBottomSheetRef.current?.present();
+    searchBottomSheetRef.current?.dismiss();
+  }
+
   const pickImage = async (room) => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -91,11 +101,6 @@ export default function ImagePickerExample() {
   };
 
   const rooms = ["Bedroom", "Livingroom", "Kitchen", "Bathroom", "Diningroom"];
-
-  function handlePresentModal() {
-    searchBottomSheetRef.current?.present();
-  }
-
   const PropertyType = ["Any", "House", "Apartment", "Condo", "Real Estate"];
 
   return (

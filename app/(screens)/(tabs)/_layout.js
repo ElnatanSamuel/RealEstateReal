@@ -4,18 +4,22 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Tabs } from 'expo-router';
 
 // native
-// import { createStackNavigator  } from '@react-navigation/stack';
-// import { NavigationContainer } from '@react-navigation/native';
-// import Featured from "./featured"
-// import Index from "./index"
-// import Reccomendation from "./reccomendation"
+import { createStackNavigator  } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
+import Featured from "./featured"
+import index from "./index"  
+import Reccomendation from "./reccomendation"
 // const Stack = createStackNavigator();
+
+const Stack = createMaterialTopTabNavigator();
 
 // native
 // export default function TabLayout(){
 //     <NavigationContainer independent={false} >
 //     <Stack.Navigator >
-//       <Stack.Screen name="Result" component={Index} />
+//       <Stack.Screen name="Result" component={Results} />
 //       <Stack.Screen name="Featured" component={Featured} />
 //       <Stack.Screen name="Reccomendation" component={Reccomendation} />
 //     </Stack.Navigator>
@@ -25,7 +29,9 @@ import { Tabs } from 'expo-router';
 // expo
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: 'blue' }}>
+    <Tabs 
+    // initialRouteName='results'
+    screenOptions={{ tabBarActiveTintColor: 'blue' }}>
       <Tabs.Screen
         name="index"
         options={{
@@ -38,10 +44,11 @@ export default function TabLayout() {
       <Tabs.Screen
         name="reccomendation"
         options={{
-          title: 'Reccomendation',
+          // title: 'Reccomendation',
         //   href:null,
           headerShown: false,
-          tabBarIcon: ({ color }) => <FontAwesome size={28} name="cog" color={color} />,
+          // tabBarLabel: 'Profile'
+          // tabBarIcon: ({ color }) => <FontAwesome size={28} name="cog" color={color} />,
         }} />
         <Tabs.Screen
         name="featured"
