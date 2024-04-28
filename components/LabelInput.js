@@ -27,7 +27,8 @@ const LabelInput = ({ title, customStyles, value, setValue, onChangeText   }) =>
       <TextInput
         // onChangeText={handleInputChange}
         // value={value}  
-        onChange={(e)=> handleTextChange(e)}
+        // onChange={(e)=> handleTextChange(e)}
+        onChangeText={handleTextChange}
         // value={text}
         placeholder="Type something..."
         className={`border border-black/50 ${customStyles} px-2 py-3 rounded-md`}
