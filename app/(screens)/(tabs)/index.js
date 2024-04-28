@@ -1,11 +1,5 @@
 import {
-  
-  StyleSheet,
-  TextInput,
-  Button,
   FlatList,
-  FlatListComponent,
-  RefreshControl,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -22,32 +16,22 @@ import BottomSheet, {
 
 import { useSelector } from "react-redux";
 import { selectHouseData } from "../../../slices/houseSlice";
+
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-// add listing import
-// import { useState, useRef, useEffect } from "react";
-// import {
-//   Button,
-//   View,
-//   StyleSheet,
-//   ScrollView,
-//   TextInput,
-//   Text,
-// } from "react-native";
-
-import * as ImagePicker from "expo-image-picker";
 import * as Location from "expo-location";
 import Checkbox from "expo-checkbox";
 
 import SegmentedControl from "@react-native-segmented-control/segmented-control";
 
-import SurfaceAdd from "../../../components/SurfaceAdd";
 import LabelInput from "../../../components/LabelInput";
 import ScrollRoomNumber from "../../../components/ScrollRoomNumber";
 
+import {setSearch} from "./../../../slices/searchSlice"
+
 const Home = () => {
 
-  const [image, setImage] = useState(null);
+  // const [image, setImage] = useState(null);
   const [price, setPrice] = useState(null);
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState(null);
@@ -60,21 +44,21 @@ const Home = () => {
   const searchBottomSheetRef = useRef(null)
   const optionsBottomSheetRef = useRef(null)
 
-  const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
+  // const pickImage = async () => {
+  //   // No permissions request is necessary for launching the image library
+  //   let result = await ImagePicker.launchImageLibraryAsync({
+  //     mediaTypes: ImagePicker.MediaTypeOptions.All,
+  //     allowsEditing: true,
+  //     aspect: [4, 3],
+  //     quality: 1,
+  //   });
 
-    console.log(result);
+  //   console.log(result);
 
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
-    }
-  };
+  //   if (!result.canceled) {
+  //     setImage(result.assets[0].uri);
+  //   }
+  // };
 
   const getLocation = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
@@ -216,7 +200,10 @@ const Home = () => {
             <View className="flex-row gap-x-4 mt-8">
               {/* Price Min */}
               <View className="flex-1">
-                <LabelInput title="Price Min" customStyles="w-full" />
+                <LabelInput
+                //  onChangeText={setSearch}
+                title="Price Min" 
+                customStyles="w-full" />
               </View>
 
               <View className="flex-1">

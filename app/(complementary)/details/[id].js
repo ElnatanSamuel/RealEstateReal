@@ -7,16 +7,38 @@ import {
   TouchableOpacity,
   Button,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import image from "../../constants/image";
-import CarouselRoom from "../../components/CarouselRoom";
+import image from "../../../constants/image";
+import CarouselRoom from "../../../components/CarouselRoom";
 import { StatusBar } from "expo-status-bar";
-import HorizontalScrollRooms from "../../components/HorizontalScrollRooms";
-import { Link } from "expo-router";
+import HorizontalScrollRooms from "../../../components/HorizontalScrollRooms";
+import { Link, useLocalSearchParams, useSearchParams } from "expo-router";
+import { useNavigation, useRoute } from "@react-navigation/native";
+
+import { useDispatch, useSelector } from "react-redux";
+import {  selectSelectedHouse, getHouse } from "../../../slices/houseSlice";
+import MapView, { Marker } from "react-native-maps";
+
+
 
 const Details = () => {
-  const width = Dimensions.get("window").width;
+
+  const dispatch = useDispatch()
+  const {id} = useLocalSearchParams()
+  const house = useSelector(selectSelectedHouse)
+
+  const { width, } = Dimensions.get('window');
+
+
+  useEffect(()=>{
+  
+    dispatch(getHouse(id))
+    latitude = house.location.coords.lat
+    longitude = house.location.coords.lng
+
+  },[id])
+
   const rooms = [
     {
       image: image.detailimg,
@@ -57,39 +79,86 @@ const Details = () => {
             <HorizontalScrollRooms rooms={rooms} />
           </View>
 
+          {/* detail */}
           <View className="px-2 mt-4">
+          {/* availability */}
             <View className="flex-row items-center gap-2">
-              <Text className="p-2 bg-green-600 rounded-full w-2 h-2"></Text>
 
-              <Text className=" text-green-500">Available</Text>
+                {!house.offMarket ?
+                          <>
+                        <Text className="p-2 bg-green-600 rounded-full w-2 h-2"></Text>
+                        <Text className=" text-green-500">Available </Text>
+                          </>
+                          : 
+                          <>
+                          <Text className="p-2 bg-slate-600 rounded-full w-2 h-2"></Text>
+                          <Text className=" text-white">off-market </Text>
+                          </>
+                }
             </View>
+
             <View className="flex-col gap-2 opacity-90 mt-2">
+
               <Text className="text-lg font-extrabold text-gray-300">
-                ETB 200,000
+                ETB {house.price}
               </Text>
+
               <Text className="text-lg font-extrabold text-gray-300">
-                3BD . 3BA . 1,882SQFT
+                {house.bedrooms}BD . {house.bathrooms}BA . {house.houseSize} SQFT
               </Text>
+              
+              <Text className="text-gray-300 text-xs">
+                {house.address}
+              </Text>
+                
+                {/* <Text className="underline text-white">Read More</Text> */}
+
               <Text className="text-lg font-extrabold underline text-gray-300">
                 Call (+251923234562)
               </Text>
+              
               <Text className="text-gray-300 text-xs">
                 By Calling You Are Concenting To Our Policy.{" "}
                 <Text className="underline text-white">Read More</Text>
               </Text>
             </View>
+
+            <View className="mt-4">
+              <Text className="text-white text-lg ">
+              {house.description}
+              </Text>
+            </View>
+
           </View>
+              
+          {/* Map  */}
+          <View className="mt-6 ">
 
-          <View className="mt-6">
-            <Link className="w-full border" href="/map">
-            <Image
-              className="w-full h-[300px]"
-              source={image.basemap}
-              resizeMode="cover"
-              />
-              </Link>
+            <View className="flex-1 border border-white h-72">
 
-            <View className="items-center justify-center flex-row">
+                <MapView
+                  region={{ 
+                    latitude: house.location.coords.lat,
+                    longitude: house.location.coords.lng,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                  }}
+                  className="flex-1">
+
+                  <Marker
+                    coordinate={{
+                      latitude:house.location.coords.lat,
+                      longitude:house.location.coords.lng,
+                    }}
+                    title={house.address}
+                    description={'description'}
+                  />
+
+                </MapView>
+
+            </View>
+
+            <View className="items-center justify-around flex-row">
 
               <TouchableOpacity className="bg-white flex-row justify-evenly text-black p-4 mt-4 rounded-2xl inline">
                 <Text className="text-black font-bold">
@@ -104,8 +173,10 @@ const Details = () => {
               </TouchableOpacity>
 
             </View>
+
           </View>
 
+          {/* similar */}
           <View className="mt-6">
             <Text className="px-2 text-sm font-extrabold text-gray-300">
               Similar Results
@@ -120,6 +191,9 @@ const Details = () => {
                 {rooms.map((room) => (
                   <View
                     key={room.index}
+                    onPress={(()=>{
+                      router.push("/details/2")
+                    })}
                     className="relative w-32 items-center justify-center rounded-xl ml-4"
                   >
                     <Image
@@ -148,6 +222,7 @@ const Details = () => {
               </ScrollView>
             </View>
           </View>
+
         </View>
       </ScrollView>
       <StatusBar backgroundColor="#012847" style="light" />

@@ -135,7 +135,7 @@ import image from "../constants/image";
 //   ]
 
 const houseData = [{
-    "houseId": "001",
+    "houseId": "1",
     "image": image.detailimg,
     "address": "123 Main St, City, Country",
     "price": 250000,
@@ -175,10 +175,10 @@ const houseData = [{
     "listedFor": "sell"
   },
   {
-    "houseId": "002",
+    "houseId": "2",
     "image": image.detailimg,
     "address": "456 Elm St, City, Country",
-    "price": 1800,
+    "price": 190787000,
     "propertyType": "apartment",
     "bedrooms": 2,
     "bathrooms": 1,
@@ -215,7 +215,7 @@ const houseData = [{
     "listedFor": "sell"
   },
   {
-    "houseId": "003",
+    "houseId": "3",
     "image": image.detailimg,
     "address": "789 Oak St, City, Country",
     "price": 300000,
@@ -255,7 +255,7 @@ const houseData = [{
     "listedFor": "sell"
   },
   {
-    "houseId": "004",
+    "houseId": "4",
     "image": image.detailimg,
     "address": "321 Pine St, City, Country",
     "price": 500000,
@@ -295,7 +295,7 @@ const houseData = [{
     "listedFor": "sell"
   },
   {
-    "houseId": "005",
+    "houseId": "5",
     "image": image.detailimg,
     "address": "246 Maple St, City, Country",
     "price": 180000,
@@ -335,7 +335,7 @@ const houseData = [{
     "listedFor": "sell"
   },
   {
-    "houseId": "006",
+    "houseId": "6",
     "image": image.detailimg,
     "address": "789 Cedar St, City, Country",
     "price": 400000,
@@ -375,7 +375,7 @@ const houseData = [{
     "listedFor": "sell"
   },
   {
-    "houseId": "007",
+    "houseId": "7",
     "image": image.detailimg,
     "address": "1010 Walnut St, City, Country",
     "price": 600000,
@@ -415,7 +415,7 @@ const houseData = [{
     "listedFor": "sell"
   },
   {
-    "houseId": "008",
+    "houseId": "8",
     "image": image.detailimg,
     "address": "1313 Oak St, City, Country",
     "price": 350000,
@@ -455,7 +455,7 @@ const houseData = [{
     "listedFor": "sell"
   },
   {
-    "houseId": "009",
+    "houseId": "9",
     "image": image.detailimg,
     "address": "1717 Maple St, City, Country",
     "price": 200000,
@@ -495,7 +495,7 @@ const houseData = [{
     "listedFor": "sell"
   },
   {
-    "houseId": "010",
+    "houseId": "0",
     "image": image.detailimg,
     "address": "2121 Cedar St, City, Country",
     "price": 450000,

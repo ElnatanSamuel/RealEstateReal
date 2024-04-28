@@ -13,7 +13,7 @@ const CarouselRoom = ({ rooms, width }) => {
     <View className="relative">
       <TouchableOpacity
         className="z-50 absolute top-4 left-4 p-2 bg-primary rounded-full"
-        onPress={() => router.push("/")}
+        onPress={() => router.back()}
       >
         <Image
           source={icon.backicon}

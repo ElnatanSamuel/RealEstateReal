@@ -27,12 +27,14 @@ import ScrollRoomNumber from "../../components/ScrollRoomNumber";
 // import LabelInput from "../../components/LabelInput";
 
 export default function ImagePickerExample() {
+
   const [image, setImage] = useState(null);
   const [price, setPrice] = useState(null);
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState(null);
   const [homeSize, setHomeSize] = useState(null);
-  const [lotSize, setLotSize] = useState(null);
+  // const [lotSize, setLotSize] = useState(null);
+
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isChecked, setChecked] = useState(false);
 
@@ -110,11 +112,15 @@ export default function ImagePickerExample() {
             <View className="flex-row gap-x-4 mt-8">
               {/* Homesize */}
               <View className="flex-1">
-                <LabelInput title="Home Size" customStyles="w-full" />
+                <LabelInput value={homeSize} 
+                // onChangeText={(text) => {
+                // setHomeSize(text);
+                // }} 
+                title="Home Size" customStyles="w-full" />
               </View>
-              <View className="flex-1">
+              {/* <View className="flex-1">
                 <LabelInput title="Lot Size" customStyles="w-full" />
-              </View>
+              </View> */}
 
               {/* Lotsize */}
             </View>
@@ -123,7 +129,7 @@ export default function ImagePickerExample() {
 
             <View className="flex-row items-end mt-4 gap-x-4 relative">
               <View className="flex-1">
-                <LabelInput title="Address" customStyles="w-full" />
+                <LabelInput title="Address" value={location} customStyles="w-full" />
               </View>
               <View className="flex-1 absolute right-0">
                 <TouchableOpacity
@@ -149,7 +155,7 @@ export default function ImagePickerExample() {
             {/* Price */}
             <View className="flex-row gap-x-4 mt-4 items-center relative">
               <View className="flex-1">
-                <LabelInput title="Price" customStyles={"w-full"} />
+                <LabelInput title="Price" value={price} customStyles={"w-full"} />
               </View>
               <View className="absolute right-4 top-[55%]">
                 <Text className=" text-xl">ETB</Text>

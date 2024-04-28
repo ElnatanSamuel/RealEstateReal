@@ -18,14 +18,19 @@ export const mapSlice = createSlice({
       state.searchEnabled = !state.searchEnabled
     }, toggleMapMode: (state) => {
       state.mapMode = !state.mapMode
-    }, setHouse: (state,action) => {
-      state.selectedHouse = action.payload
-    },
+    }, 
+    // setHouse: (state,action) => {
+    //   state.selectedHouse = action.payload
+    // },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { toggleSearchEnabled, toggleMapMode, setHouse } = mapSlice.actions
+export const { 
+  toggleSearchEnabled,
+  toggleMapMode,
+  // setHouse
+ } = mapSlice.actions
 
 export const selectSearchEnabled = (state) => state.map.searchEnabled
 export const selectResults = (state) => state.map.results

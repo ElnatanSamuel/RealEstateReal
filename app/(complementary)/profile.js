@@ -13,7 +13,7 @@ const profile = () => {
 
   return (
     <>
-    <View className="w-full h-32 bg-red-500 z-20 ">
+    <View className="w-full h-32 bg-red-500 z-20">
       <View className="w-24 aspect-square rounded-full bg-white border relative top-1/2 p-1 bg-[url('../../assets/images/logo.png')] bg-cover bg-center">
         <View className="w-full h-full bg-green-500 rounded-full" ></View>
       </View>
