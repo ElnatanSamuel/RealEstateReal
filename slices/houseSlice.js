@@ -73,7 +73,8 @@ export const houseSlice = createSlice({
 export const {
   // setHouse,
   setSaved,
-  getHouse } = houseSlice.actions
+  getHouse 
+} = houseSlice.actions
 
 export const selectHouseData = (state) => state.house.houseData
 export const selectRoomData = (state) => state.house.roomData

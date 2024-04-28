@@ -27,12 +27,12 @@ import SegmentedControl from "@react-native-segmented-control/segmented-control"
 import LabelInput from "../../../components/LabelInput";
 import ScrollRoomNumber from "../../../components/ScrollRoomNumber";
 
-import {setSearch} from "./../../../slices/searchSlice"
+import {setPrice} from "./../../../slices/searchSlice"
 
 const Home = () => {
 
   // const [image, setImage] = useState(null);
-  const [price, setPrice] = useState(null);
+  // const [price, setPrice] = useState(null);
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState(null);
   const [homeSize, setHomeSize] = useState(null);
@@ -201,7 +201,7 @@ const Home = () => {
               {/* Price Min */}
               <View className="flex-1">
                 <LabelInput
-                //  onChangeText={setSearch}
+                for="price"
                 title="Price Min" 
                 customStyles="w-full" />
               </View>

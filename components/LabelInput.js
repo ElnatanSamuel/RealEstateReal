@@ -1,28 +1,49 @@
 import React, { useEffect, useState } from "react";
 import { Text, TextInput, View } from "react-native";
 
-const LabelInput = ({ title, customStyles, value, setValue, onChangeText   }) => {
+import {selectPrice,setPrice} from "../slices/searchSlice"
+import { useDispatch, useSelector } from "react-redux";
 
-  // const [text, setText] = useState('');
 
-  // const handleInputChange = (inputText) => {
-  //   console.log(inputText,'inputText')
-  //   console.log(typeof(setValue))
-  //   value =
-  //   // setValue(inputText);
-  // };
+const LabelInput = ({ title, customStyles, setFor }) => {
+
+
+  const price = useSelector(selectPrice)
+  const dispatch = useDispatch()
+
 
   const handleTextChange = (e) => {
-    // setText(inputText);
-    console.log(e)
-    // if (onChangeText) {
-      // onChangeText(inputText);
-    // }
+
+    switch (setFor) {
+      
+      case "price":
+        dispatch(setPrice(e));
+        break;
+      case "location":
+        dispatch(setLocation(e));
+        break;
+      case "bedrooms":
+        dispatch(setBedrooms(e));
+        break;
+      case "bathrooms":
+          dispatch(setBathrooms(e));
+          break;      
+      case "size":
+          dispatch(setHouseSize(e));
+          break;
+      case "age":
+          dispatch(setHouseAge(e));
+          break;
+      default:
+        break;
+
+    }
+
   };
 
   return (
     <View className="flex-col justify-center">
-      <Text className="text-lg opacity-80 mb-2"> {title}</Text>
+      <Text className="text-lg opacity-80 mb-2">{typeof(price)} {title}</Text>
 
       <TextInput
         // onChangeText={handleInputChange}

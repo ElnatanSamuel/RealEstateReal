@@ -1,9 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-// import { houseData } from '../data'
-
 
 const initialState = {
-  price:null,
+  price:"jkljkl",
   propertyType:null,
   bedrooms:null,
   bathrooms:null,
@@ -18,14 +16,12 @@ const initialState = {
       },
     }
 
-
 export const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
     setPrice: (state, action) => {
       state.price = action.payload
-    }
     },
     setPropertyType: (state, action) => {
       state.propertyType = action.payload
@@ -45,23 +41,24 @@ export const searchSlice = createSlice({
     setLocation: (state, action) => {
       state.location = action.payload
     },
-  },
-)
+  }
+})
+
 
 // Action creators are generated for each case reducer function
 export const { 
-  setSearch
+  setPrice
  } = searchSlice.actions
 
-export const selectPrice = (state) => state.price
-export const selectLocation = (state) => state.location
+export const selectPrice = (state) => state.search.price
+export const selectLocation = (state) => state.search.location
 
-export const selectedBedrooms = (state) => state.bedrooms
-export const selectBathrooms = (state) => state.bathrooms
+export const selectedBedrooms = (state) => state.search.bedrooms
+export const selectBathrooms = (state) => state.search.bathrooms
 
-export const selectHouseSize = (state) => state.houseSize
-export const selectHouseAge = (state) => state.houseAge
+export const selectHouseSize = (state) => state.search.houseSize
+export const selectHouseAge = (state) => state.search.houseAge
 
-export const selectPropertyType = (state) => state.propertyType
+export const selectPropertyType = (state) => state.search.propertyType
 
 export default searchSlice.reducer
