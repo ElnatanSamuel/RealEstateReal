@@ -1,4 +1,7 @@
 import {
+  StyleSheet,
+  TextInput,
+  Button,
   FlatList,
   ScrollView,
   Text,
@@ -7,6 +10,7 @@ import {
 } from "react-native";
 import React, { useState, useRef } from "react";
 
+import { Link } from "expo-router";
 import HouseCard from "../../../components/HouseCard";
 import  {
   BottomSheetScrollView,
@@ -68,7 +72,6 @@ const Home = () => {
   const rooms = ["Bedroom", "Livingroom", "Kitchen", "Bathroom", "Diningroom"];
   const PropertyType = ["Any", "House", "Apartment", "Condo", "Real Estate"];
 
-
   function handlePresentModal() {
     searchBottomSheetRef.current?.present();
     searchBottomSheetRef.current?.dismiss();
@@ -101,9 +104,14 @@ const Home = () => {
     setSelectedFilterStyle(filter);
   };
 
+  const handleFilterOperations = (filter) => {
+    handlePresentModal();
+    setSelectedFilter(filter);
+  };
+
   return (
     <>
-      <View className="w-full bg-white h-fit py-4">
+      <View className="w-full bg-primary h-fit py-4">
         <ScrollView
           className=""
           decelerationRate="fast"
@@ -140,7 +148,7 @@ const Home = () => {
       </View>
 
       <ScrollView
-        className="flex-1 gap-0 bg-white"
+        className="flex-1 gap-0 bg-primary"
         decelerationRate="fast"
         vertical={true}
         showsVerticalScrollIndicator={false}
@@ -148,34 +156,47 @@ const Home = () => {
         <FlatList
           data={houseData}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => <HouseCard house={item} />}
+          renderItem={({ item }) => (
+            <Link href="/details">
+              {" "}
+              <HouseCard house={item} />
+            </Link>
+          )}
         />
       </ScrollView>
 
       {/* search modal  */}
-      <BottomSheetModalProvider>
+      <BottomSheetModalProvider className="h-full bg-primary">
         <BottomSheetModal
-          className="h-full"
+          className="h-full bg-primary"
           ref={searchBottomSheetRef}
-          snapPoints={["30%","50%","70%","100%"]}
+          snapPoints={["30%", "50%", "70%", "100%"]}
           enablePanDownToClose={true}
           animateOnMount={true}>
 
           <BottomSheetScrollView
-            className="pt-5 h-full "
+            className="pt-5 h-full bg-primary"
             decelerationRate="fast"
             vertical={true}
-            showsVerticalScrollIndicator={false}>
-          {/* begin */}
+            showsVerticalScrollIndicator={false}
+          >
+            {/* begin */}
 
-          <View className=" lex-1 text-5xl h-full bg-white">
-      <SegmentedControl
-        values={["Buy", "Rent"]}
-        selectedIndex={selectedIndex}
-        onChange={(event) => {
-          setSelectedIndex(event.nativeEvent.selectedSegmentIndex);
-        }}
-      />
+            <View className=" lex-1 text-5xl h-full bg-primary">
+              <SegmentedControl
+                tintColor="white"
+                backgroundColor="#012847"
+                activeFontStyle={{
+                  fontWeight: "bold",
+                  color: "black",
+                }}
+                appearance="dark"
+                values={["Buy", "Rent"]}
+                selectedIndex={selectedIndex}
+                onChange={(event) => {
+                  setSelectedIndex(event.nativeEvent.selectedSegmentIndex);
+                }}
+              />
 
       <ScrollView className="px-2 pb-10">
         <View className="flex-col  mt-4">
@@ -249,13 +270,18 @@ const Home = () => {
               <ScrollRoomNumber setFor="bathrooms" title="Bathrooms" />
             </View>
 
-            {/* PropertyType */}
-            <View className="mt-6">
-              <TouchableOpacity onPress={handleOptionsPresentModal} className="">
-                <Text className="text-lg opacity-80">Property Type</Text>
-                <Text className="text-sm opacity-60">Any</Text>
-              </TouchableOpacity>
-            </View>
+                    {/* PropertyType */}
+                    <View className="mt-6">
+                      <TouchableOpacity
+                        onPress={handleOptionsPresentModal}
+                        className=""
+                      >
+                        <Text className="text-lg opacity-80">
+                          Property Type
+                        </Text>
+                        <Text className="text-sm opacity-60">Any</Text>
+                      </TouchableOpacity>
+                    </View>
 
             {/* Features */}
             <View className="mt-6">
