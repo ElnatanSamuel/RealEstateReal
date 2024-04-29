@@ -176,6 +176,18 @@ export default function ImagePickerExample() {
                 <Text className="text-sm opacity-60">Any</Text>
               </TouchableOpacity>
             </View>
+
+            <View className="mt-6">
+            <TouchableOpacity
+                  className=" bg-black p-[17px] rounded-full mt-4 w-full items-center"
+                  // onPress={handlePresentModal}
+                  title="">
+
+                  <Text className="text-white font-bold">Search</Text> 
+            </TouchableOpacity>
+
+
+            </View>
           </View>
         </View>
       </ScrollView>
