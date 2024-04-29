@@ -6,6 +6,7 @@ import {
   ScrollView,
   TextInput,
   Text,
+  Image,
 } from "react-native";
 
 import * as ImagePicker from "expo-image-picker";
@@ -27,8 +28,13 @@ import ScrollRoomNumber from "../../components/ScrollRoomNumber";
 // import LabelInput from "../../components/LabelInput";
 
 export default function ImagePickerExample() {
-
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState({
+    Bedroom: [],
+    Livingroom: [],
+    Kitchen: [],
+    Bathroom: [],
+    Diningroom: [],
+  });
   const [price, setPrice] = useState(null);
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState(null);
@@ -45,21 +51,40 @@ export default function ImagePickerExample() {
   function handlePresentModal() {
     searchBottomSheetRef.current?.present();
     searchBottomSheetRef.current?.dismiss();
-  } 
+  }
 
-  const pickImage = async () => {
+  function handlePresentModal() {
+    searchBottomSheetRef.current?.present();
+    searchBottomSheetRef.current?.dismiss();
+  }
+
+  const pickImage = async (room) => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
+      base64: true,
+      allowsMultipleSelection: true,
     });
 
-    console.log(result);
-
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      if (room === "Bedroom") {
+        setImage({ ...image, Bedroom: result.assets });
+      }
+      if (room === "Livingroom") {
+        setImage({ ...image, Livingroom: result.assets });
+      }
+      if (room === "Kitchen") {
+        setImage({ ...image, Kitchen: result.assets });
+      }
+      if (room === "Bathroom") {
+        setImage({ ...image, Bathroom: result.assets });
+      }
+      if (room === "Diningroom") {
+        setImage({ ...image, Diningroom: result.assets });
+      }
     }
   };
 
@@ -80,8 +105,15 @@ export default function ImagePickerExample() {
   const PropertyType = ["Any", "House", "Apartment", "Condo", "Real Estate"];
 
   return (
-    <View className=" lex-1 text-5xl h-full bg-white">
+    <View className=" lex-1 text-5xl h-full bg-primary">
       <SegmentedControl
+        tintColor="white"
+        backgroundColor="#012847"
+        activeFontStyle={{
+          fontWeight: "bold",
+          color: "black",
+        }}
+        appearance="dark"
         values={["Sell", "Lease"]}
         selectedIndex={selectedIndex}
         onChange={(event) => {
@@ -93,15 +125,21 @@ export default function ImagePickerExample() {
         <View className="flex-col  mt-4">
           {/* Image Picker */}
           <View>
-            <Text className="text-2xl font-bold">Pick Your Images</Text>
+            <Text className="text-2xl text-white font-bold">
+              Pick Your Images
+            </Text>
             <ScrollView
               decelerationRate="fast"
               horizontal={true}
               showsHorizontalScrollIndicator={false}
             >
-              <View className="flex-row mt-2">
+              <View className="flex-row  mt-2">
                 {rooms.map((room) => (
-                  <SurfaceAdd title={room} pickImage={pickImage} />
+                  <SurfaceAdd
+                    title={room}
+                    pickImage={() => pickImage(room)}
+                    image={image}
+                  />
                 ))}
               </View>
             </ScrollView>
@@ -133,11 +171,11 @@ export default function ImagePickerExample() {
               </View>
               <View className="flex-1 absolute right-0">
                 <TouchableOpacity
-                  className=" bg-black p-[17px] rounded-r-md  w-full items-center"
+                  className=" bg-white p-[17px] rounded-r-md  w-full items-center"
                   onPress={getLocation}
                   title=""
                 >
-                  <Text className="text-white font-bold">Use my Location</Text>
+                  <Text className="text-black font-bold">Use my Location</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -149,7 +187,7 @@ export default function ImagePickerExample() {
 
             {/* bathroom */}
             <View className="mt-6">
-              <ScrollRoomNumber title="Bedrooms" />
+              <ScrollRoomNumber title="Bathroom" />
             </View>
 
             {/* Price */}
@@ -158,22 +196,36 @@ export default function ImagePickerExample() {
                 <LabelInput title="Price" value={price} customStyles={"w-full"} />
               </View>
               <View className="absolute right-4 top-[55%]">
-                <Text className=" text-xl">ETB</Text>
+                <Text className="text-xl text-white">ETB</Text>
               </View>
             </View>
 
             {/* PropertyType */}
             <View className="mt-6">
               <TouchableOpacity onPress={handlePresentModal} className="">
-                <Text className="text-lg opacity-80">Property Type</Text>
-                <Text className="text-sm opacity-60">Any</Text>
+                <Text className="text-lg text-white opacity-80">
+                  Property Type
+                </Text>
+                <Text className="text-sm text-white opacity-60">Any</Text>
               </TouchableOpacity>
             </View>
             {/* Features */}
             <View className="mt-6">
               <TouchableOpacity onPress={handlePresentModal}>
-                <Text className="text-lg opacity-80">Features</Text>
-                <Text className="text-sm opacity-60">Any</Text>
+                <Text className="text-lg text-white opacity-80">Features</Text>
+                <Text className="text-sm text-white opacity-60">Any</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View className="mt-6 mb-4">
+              <TouchableOpacity
+                className=" bg-white p-[17px] rounded-md  w-full items-center"
+                onPress={getLocation}
+                title=""
+              >
+                <Text className="text-black text-lg font-bold">
+                  Add Listing
+                </Text>
               </TouchableOpacity>
             </View>
 

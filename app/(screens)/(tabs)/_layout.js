@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 // expo
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Tabs, Stack } from 'expo-router';
 
 // native
-// import { createStackNavigator  } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+// import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 import Featured from "./featured"
 import Index from "./index"  
@@ -14,6 +14,7 @@ import Reccomendation from "./reccomendation"
 import { Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { store } from '../../../store';
+import { StatusBar } from "expo-status-bar";
 // const Tab = createMaterialTopTabNavigator();
 
 const Tab = createMaterialTopTabNavigator();
@@ -49,6 +50,7 @@ const Tab = createMaterialTopTabNavigator();
 // expo
 export default function TabLayout() {
   return (
+    <>
     <Tabs 
     // initialRouteName='results'
     screenOptions={{ tabBarActiveTintColor: 'blue' }}>
@@ -80,14 +82,23 @@ export default function TabLayout() {
           // tabBarIcon: ({ color }) => <FontAwesome size={28} name="cog" color={color} />,
         }} />
         <Tabs.Screen
-        name="featured"
-        options={{
-          title: 'featured',
-        //   href:null,
-          headerShown: false,
-          tabBarIcon: ({ color }) => <FontAwesome size={28} name="cog" color={color} />,
-        }}
+          name="featured"
+          options={{
+            title: "Featured",
+            //   href:null,
+            headerShown: false,
+            tabBarLabelStyle: { fontSize: 14 },
+            tabBarIcon: ({ color }) => (
+              <FontAwesome size={14} name="list" color={color} />
+            ),
+          }}
+        />
+      </Tabs>
+      <StatusBar
+        barStyle="light-content"
+        style="light"
+        backgroundColor="#012847"
       />
-    </Tabs>
+    </>
   );
 }

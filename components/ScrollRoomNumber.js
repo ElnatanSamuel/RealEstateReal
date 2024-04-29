@@ -40,7 +40,7 @@ const ScrollRoomNumber = ({ setFor,title }) => {
 
   return (
     <View>
-      <Text className="opacity-80 text-lg">{title}</Text>
+      <Text className=" text-white text-lg">{title}</Text>
       <ScrollView
         className="mt-4 gap-x-4"
         decelerationRate="fast"
