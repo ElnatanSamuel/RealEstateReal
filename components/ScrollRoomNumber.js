@@ -7,14 +7,35 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 
-const ScrollRoomNumber = ({ title }) => {
+import {selectedBedrooms,selectBathrooms,setBathrooms,setBedrooms } from "../slices/searchSlice"
+import { useDispatch, useSelector } from "react-redux";
+
+
+const ScrollRoomNumber = ({ setFor,title }) => {
   const [isSelected, setIsSelected] = useState("Any");
   const [isSelectedStyle, setIsSelectedStyle] = useState("bg-black text-white");
 
   const rooms = ["Any", "1", "2", "3", "4", "5+"];
+  
+      const bedrooms = useSelector(selectedBedrooms)
+      const bathrooms = useSelector(selectBathrooms)
+      const dispatch = useDispatch()  
 
   const handleSelected = (item) => {
+
     setIsSelected(item);
+
+      switch (setFor) {
+        case "bedrooms":
+        dispatch(setBedrooms(item));
+          break;
+        case "bathrooms":
+          dispatch(setBathrooms(item));
+          break;
+        default:
+          break;
+        }
+   
   };
 
   return (
@@ -27,7 +48,7 @@ const ScrollRoomNumber = ({ title }) => {
         showsHorizontalScrollIndicator={false}
       >
         {rooms.map((item, index) => (
-          <TouchableOpacity onPress={() => setIsSelected(item)}>
+          <TouchableOpacity onPress={() => handleSelected(item)}>
             <Text
               className={`${
                 isSelected === item ? isSelectedStyle : "bg-white text-black"

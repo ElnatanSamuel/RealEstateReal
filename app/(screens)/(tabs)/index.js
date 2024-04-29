@@ -8,59 +8,52 @@ import {
 import React, { useState, useRef } from "react";
 
 import HouseCard from "../../../components/HouseCard";
-import BottomSheet, {
+import  {
   BottomSheetScrollView,
   BottomSheetModal,
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
 
-import { useSelector } from "react-redux";
 import { selectHouseData } from "../../../slices/houseSlice";
-
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 import * as Location from "expo-location";
 import Checkbox from "expo-checkbox";
-
 import SegmentedControl from "@react-native-segmented-control/segmented-control";
-
 import LabelInput from "../../../components/LabelInput";
 import ScrollRoomNumber from "../../../components/ScrollRoomNumber";
 
-import {setPrice} from "./../../../slices/searchSlice"
+import { 
+  setLocation,
+  selectedBedrooms,
+  selectPrice,
+  selectPriceMin,
+  selectPriceMax,
+  selectBathrooms,
+  selectPropertyType,
+  selectHouseAge,
+} from "./../../../slices/searchSlice"
+import { useSelector } from "react-redux";
 
 const Home = () => {
 
-  // const [image, setImage] = useState(null);
-  // const [price, setPrice] = useState(null);
-  const [location, setLocation] = useState(null);
-  const [address, setAddress] = useState(null);
-  const [homeSize, setHomeSize] = useState(null);
-  const [lotSize, setLotSize] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isChecked, setChecked] = useState(false);
 
   const houseData = useSelector(selectHouseData);
+  const bathrooms = useSelector(selectBathrooms);
+  const bedrooms = useSelector(selectedBedrooms);
+  const propertyType = useSelector(selectPropertyType);
+  const houseAge = useSelector(selectHouseAge);
+
+  const price = useSelector(selectPrice);
+  const priceMax = useSelector(selectPriceMax);
+  const priceMin = useSelector(selectPriceMin);
+
   const searchBottomSheetRef = useRef(null)
   const optionsBottomSheetRef = useRef(null)
 
-  // const pickImage = async () => {
-  //   // No permissions request is necessary for launching the image library
-  //   let result = await ImagePicker.launchImageLibraryAsync({
-  //     mediaTypes: ImagePicker.MediaTypeOptions.All,
-  //     allowsEditing: true,
-  //     aspect: [4, 3],
-  //     quality: 1,
-  //   });
-
-  //   console.log(result);
-
-  //   if (!result.canceled) {
-  //     setImage(result.assets[0].uri);
-  //   }
-  // };
-
   const getLocation = async () => {
+    console.log("get location")
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
       setErrorMsg("Permission to access location was denied");
@@ -68,9 +61,8 @@ const Home = () => {
     }
 
     let location = await Location.getCurrentPositionAsync({});
-    // let { longitude,latitude} = await Location.getCurrentPositionAsync({});
-    setLocation(location.coords.longitude + " , " + location.coords.latitude);
-    // setLocation({lng:longitude, lat:latitude});
+    console.log(location.coords)
+    setLocation(location.coords);// not working
   };
 
   const rooms = ["Bedroom", "Livingroom", "Kitchen", "Bathroom", "Diningroom"];
@@ -80,19 +72,25 @@ const Home = () => {
   function handlePresentModal() {
     searchBottomSheetRef.current?.present();
     searchBottomSheetRef.current?.dismiss();
-  } 
-  
+  }
+
   function handleOptionsPresentModal() {
     optionsBottomSheetRef.current?.present();
   }
 
-  const filters = [
-    "all filters",
-    "bedrooms",
-    "bathrooms",
-    "property type",
-    "price",
-  ];
+  const filters = {
+    "all filters":null,
+    "bedrooms":bedrooms,
+    "bathrooms": bathrooms,
+    // "property type":propertyType,
+    "House Age":houseAge,
+  };
+
+  // const filters = [
+  //   "all filters",
+  //   bedrooms,
+  //     ]
+
   const [selectedFilterStyle, setSelectedFilterStyle] =
     useState("bg-secondary-200");
   const [selectedFilterTextStyle, setSelectedFilterTextStyle] =
@@ -110,28 +108,30 @@ const Home = () => {
           className=""
           decelerationRate="fast"
           horizontal={true}
-          showsHorizontalScrollIndicator={false}
-        >
+          showsHorizontalScrollIndicator={false}>
+
           <View className="flex-row items-center justify-center">
-            {filters.map((filter, index) => (
+            {/* {filters.map((filter, index) => ( */}
+            {Object.entries(filters).map(([key, value]) => (
               <TouchableOpacity
-                key={index}
+                key={key}
                 onPress={()=>{handlePresentModal()}}
                 className={`rounded-2xl  p-3  ml-5 px-4 w-fit h-auto ${
-                  selectedFilter === filter ? selectedFilterStyle : null
+                  selectedFilter === value ? selectedFilterStyle : null
                 }`}
                 // onPress={() => {
-                //   setSelectedFilter(filter);
+                //   setSelectedFilter(value);
                 // }}
               >
                 <Text
                   className={`capitalize font-bold ${
-                    selectedFilter === filter
+                    selectedFilter === value
                       ? selectedFilterTextStyle
                       : "text-gray-500"
-                  }`}
-                >
-                  {filter}
+                  }`}>
+
+                    {value} {key} 
+                
                 </Text>
               </TouchableOpacity>
             ))}
@@ -152,15 +152,15 @@ const Home = () => {
         />
       </ScrollView>
 
-            {/* search modal  */}
+      {/* search modal  */}
       <BottomSheetModalProvider>
         <BottomSheetModal
           className="h-full"
           ref={searchBottomSheetRef}
           snapPoints={["30%","50%","70%","100%"]}
           enablePanDownToClose={true}
-          animateOnMount={true}
-        >
+          animateOnMount={true}>
+
           <BottomSheetScrollView
             className="pt-5 h-full "
             decelerationRate="fast"
@@ -179,74 +179,75 @@ const Home = () => {
 
       <ScrollView className="px-2 pb-10">
         <View className="flex-col  mt-4">
-          {/* Image Picker */}
-          {/* <View>
-            <Text className="text-2xl font-bold">Pick Your Images</Text>
-            <ScrollView
-              decelerationRate="fast"
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-            >
-              <View className="flex-row mt-2">
-                {rooms.map((room) => (
-                  <SurfaceAdd title={room} pickImage={pickImage} />
-                ))}
-              </View>
-            </ScrollView>
-          </View> */}
 
           {/* sizes */}
           <View className="px-2">
             <View className="flex-row gap-x-4 mt-8">
+
               {/* Price Min */}
               <View className="flex-1">
                 <LabelInput
-                for="price"
+                setFor="priceMin"
+                type="numeric"
+                value={priceMin}
                 title="Price Min" 
                 customStyles="w-full" />
               </View>
 
-              <View className="flex-1">
-                <LabelInput title="Price Max" customStyles="w-full" />
-              </View>
               {/* Price Max */}
+              <View className="flex-1">
+                <LabelInput title="Price Max" 
+                setFor="priceMax"
+                value={priceMax}
+                type="numeric"                
+                customStyles="w-full" />
+              </View>
+
             </View>
+
+                        {/* House age */}
+              <View className="flex-1">
+                <LabelInput title="House Age" 
+                setFor="age"
+                value={houseAge}
+                type="numeric"                
+                customStyles="w-full" />
+              </View>
 
             {/* location */}
             <View className="flex-row items-end mt-4 gap-x-4 relative">
+              
               <View className="flex-1">
-                <LabelInput title="Address" customStyles="w-full" />
+                <LabelInput title="Address" 
+                customStyles="w-full"
+                setFor="location"
+                />
               </View>
+
               <View className="flex-1 absolute right-0">
+                
                 <TouchableOpacity
                   className=" bg-black p-[17px] rounded-r-md  w-full items-center"
                   onPress={getLocation}
-                  title=""
-                >
-                  <Text className="text-white font-bold">Use my Location</Text>
+                  title="">
+
+                  <Text className="text-white font-bold"> Use My Location </Text>
+
                 </TouchableOpacity>
+
               </View>
+              
             </View>
 
             {/* bedroom */}
             <View className="mt-6">
-              <ScrollRoomNumber title="Bedrooms" />
+              <ScrollRoomNumber setFor="bedrooms" title="Bedrooms" />
             </View>
 
             {/* bathroom */}
             <View className="mt-6">
-              <ScrollRoomNumber title="Bathrooms" />
+              <ScrollRoomNumber setFor="bathrooms" title="Bathrooms" />
             </View>
-
-            {/* Price */}
-            {/* <View className="flex-row gap-x-4 mt-4 items-center relative">
-              <View className="flex-1">
-                <LabelInput title="Price" customStyles={"w-full"} />
-              </View>
-              <View className="absolute right-4 top-[55%]">
-                <Text className=" text-xl">ETB</Text>
-              </View>
-            </View> */}
 
             {/* PropertyType */}
             <View className="mt-6">
@@ -263,16 +264,15 @@ const Home = () => {
                 <Text className="text-sm opacity-60">Any</Text>
               </TouchableOpacity>
             </View>
-
             
             <TouchableOpacity
                   className=" bg-black p-[17px] rounded-full mt-4 w-full items-center"
                   onPress={handlePresentModal}
                   title="">
 
-                  <Text className="text-white font-bold">Search</Text>
-            
+                  <Text className="text-white font-bold">Search</Text> 
             </TouchableOpacity>
+
           </View>
         </View>
       </ScrollView>
@@ -285,18 +285,20 @@ const Home = () => {
           ref={optionsBottomSheetRef}
           snapPoints={["53%,100%"]}
           enablePanDownToClose={true}
-          animateOnMount={true}
-        >
+          animateOnMount={true}>
+
           <BottomSheetScrollView
             className="pt-5 h-full "
             decelerationRate="fast"
             vertical={true}
-            showsVerticalScrollIndicator={false}
-          >
+            showsVerticalScrollIndicator={false}>
+
             <View className="px-4">
+              
               <Text className="text-xl opacity-80  font-bold my-4">
                 Property Type
               </Text>
+
               {PropertyType.map((property) => {
                 return (
                   <View className="flex-row justify-between mb-5 ">
@@ -309,20 +311,24 @@ const Home = () => {
                   </View>
                 );
               })}
+
               <TouchableOpacity className="bg-black w-full  py-5 rounded-xl">
                 <Text className="text-white text-center font-bold">Apply</Text>
               </TouchableOpacity>
+
             </View>
-          </BottomSheetScrollView>
-        </BottomSheetModal>
-      </BottomSheetModalProvider>
-    </View>
-  
-            
+
           </BottomSheetScrollView>
         </BottomSheetModal>
       </BottomSheetModalProvider>
 
+    </View>
+  
+            
+          </BottomSheetScrollView>
+
+          </BottomSheetModal>
+      </BottomSheetModalProvider>
 
     </>
   );
