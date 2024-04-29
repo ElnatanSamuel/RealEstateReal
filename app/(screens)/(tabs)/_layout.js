@@ -14,6 +14,7 @@ import Reccomendation from "./reccomendation"
 import { Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { store } from '../../../store';
+import { StatusBar } from "expo-status-bar";
 // const Tab = createMaterialTopTabNavigator();
 
 const Tab = createMaterialTopTabNavigator();
@@ -49,6 +50,7 @@ const Tab = createMaterialTopTabNavigator();
 // expo
 export default function TabLayout() {
   return (
+    <>
     <Tabs 
     // initialRouteName='results'
     screenOptions={{ tabBarActiveTintColor: 'blue' }}>
