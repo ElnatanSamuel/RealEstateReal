@@ -4,10 +4,10 @@ import { Text, TextInput, View } from "react-native";
 const LabelInput = ({ title, customStyles }) => {
   return (
     <View className="flex-col justify-center">
-      <Text className="text-lg opacity-80 mb-2"> {title}</Text>
+      <Text className="text-lg mb-2 text-white">{title}</Text>
 
       <TextInput
-        className={`border border-black/50 ${customStyles} px-2 py-3 rounded-md`}
+        className={`border border-white/90 ${customStyles} px-2 py-3 rounded-md`}
       />
     </View>
   );

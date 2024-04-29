@@ -10,7 +10,7 @@ const SurfaceAdd = ({ title, pickImage, image }) => {
           className="p-8 mt-2 bg-white rounded-2xl height-[80px] w-[100px] items-center justify-center relative"
           elevation={4}
         >
-          <Text className="text-3xl">+</Text>
+          <Text className="text-3xl text-primary">+</Text>
           {title === "Bedroom" && image.Bedroom?.length != 0 ? (
             image ? (
               <Image
@@ -54,8 +54,8 @@ const SurfaceAdd = ({ title, pickImage, image }) => {
           ) : null}
         </Surface>
         <View className="flex-row items-center gap-0.5">
-          <Text className="text-base font-semibold text-black">{title}</Text>
-          <Text>
+          <Text className="text-base font-semibold text-white">{title}</Text>
+          <Text className=" text-white">
             (
             {title === "Bedroom" && image.Bedroom?.length != 0
               ? image.Bedroom?.length

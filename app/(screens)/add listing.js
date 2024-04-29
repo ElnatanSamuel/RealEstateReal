@@ -104,8 +104,15 @@ export default function ImagePickerExample() {
   const PropertyType = ["Any", "House", "Apartment", "Condo", "Real Estate"];
 
   return (
-    <View className=" lex-1 text-5xl h-full bg-white">
+    <View className=" lex-1 text-5xl h-full bg-primary">
       <SegmentedControl
+        tintColor="white"
+        backgroundColor="#012847"
+        activeFontStyle={{
+          fontWeight: "bold",
+          color: "black",
+        }}
+        appearance="dark"
         values={["Sell", "Lease"]}
         selectedIndex={selectedIndex}
         onChange={(event) => {
@@ -117,13 +124,15 @@ export default function ImagePickerExample() {
         <View className="flex-col  mt-4">
           {/* Image Picker */}
           <View>
-            <Text className="text-2xl font-bold">Pick Your Images</Text>
+            <Text className="text-2xl text-white font-bold">
+              Pick Your Images
+            </Text>
             <ScrollView
               decelerationRate="fast"
               horizontal={true}
               showsHorizontalScrollIndicator={false}
             >
-              <View className="flex-row mt-2">
+              <View className="flex-row  mt-2">
                 {rooms.map((room) => (
                   <SurfaceAdd
                     title={room}
@@ -142,9 +151,6 @@ export default function ImagePickerExample() {
               <View className="flex-1">
                 <LabelInput title="Home Size" customStyles="w-full" />
               </View>
-              <View className="flex-1">
-                <LabelInput title="Lot Size" customStyles="w-full" />
-              </View>
 
               {/* Lotsize */}
             </View>
@@ -157,11 +163,11 @@ export default function ImagePickerExample() {
               </View>
               <View className="flex-1 absolute right-0">
                 <TouchableOpacity
-                  className=" bg-black p-[17px] rounded-r-md  w-full items-center"
+                  className=" bg-white p-[17px] rounded-r-md  w-full items-center"
                   onPress={getLocation}
                   title=""
                 >
-                  <Text className="text-white font-bold">Use my Location</Text>
+                  <Text className="text-black font-bold">Use my Location</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -182,22 +188,36 @@ export default function ImagePickerExample() {
                 <LabelInput title="Price" customStyles={"w-full"} />
               </View>
               <View className="absolute right-4 top-[55%]">
-                <Text className=" text-xl">ETB</Text>
+                <Text className="text-xl text-white">ETB</Text>
               </View>
             </View>
 
             {/* PropertyType */}
             <View className="mt-6">
               <TouchableOpacity onPress={handlePresentModal} className="">
-                <Text className="text-lg opacity-80">Property Type</Text>
-                <Text className="text-sm opacity-60">Any</Text>
+                <Text className="text-lg text-white opacity-80">
+                  Property Type
+                </Text>
+                <Text className="text-sm text-white opacity-60">Any</Text>
               </TouchableOpacity>
             </View>
             {/* Features */}
             <View className="mt-6">
               <TouchableOpacity onPress={handlePresentModal}>
-                <Text className="text-lg opacity-80">Features</Text>
-                <Text className="text-sm opacity-60">Any</Text>
+                <Text className="text-lg text-white opacity-80">Features</Text>
+                <Text className="text-sm text-white opacity-60">Any</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View className="mt-6 mb-4">
+              <TouchableOpacity
+                className=" bg-white p-[17px] rounded-md  w-full items-center"
+                onPress={getLocation}
+                title=""
+              >
+                <Text className="text-black text-lg font-bold">
+                  Add Listing
+                </Text>
               </TouchableOpacity>
             </View>
           </View>

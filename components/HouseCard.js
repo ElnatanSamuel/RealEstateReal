@@ -6,7 +6,7 @@ import icon from "../constants/icon";
 
 const HouseCard = ({ house }) => {
   return (
-    <View className="relative w-screen  px-4 mt-3 mb-3">
+    <View className="relative w-screen px-4 mt-3 mb-6">
       {/* <Link href= "/details"> */}
       <View className="flex-row items-center gap-2">
         <View>
@@ -20,7 +20,9 @@ const HouseCard = ({ house }) => {
         </View>
         <View>
           <View className="flex-row items-center">
-            <Text className="text-base font-bold">{house.listedBy.name}</Text>
+            <Text className="text-base text-white font-bold">
+              {house.listedBy.name}
+            </Text>
             {house.listedBy.verified && (
               <Image
                 source={icon.verifiedicon}
@@ -29,7 +31,7 @@ const HouseCard = ({ house }) => {
               />
             )}
           </View>
-          <Text className="text-[12px] font-semibold text-gray-400">
+          <Text className="text-[12px] font-semibold text-gray-200">
             {house.listedBy.phone}
           </Text>
         </View>
@@ -50,22 +52,22 @@ const HouseCard = ({ house }) => {
 
         <View className="w-full flex-row justify-between mt-2 px-2">
           <View className="flex-col  space-y-1">
-            <Text className="text-base font-bold">
+            <Text className="text-base font-bold text-white">
               {house.description.slice(0, 20)}
             </Text>
-            <View className="flex-row -ml-2 items-center justify-center">
+            <View className="flex-row -ml-2 gap-1 items-center justify-center ">
               <Image
                 source={icon.blacklocationicon}
-                className="w-5 h-5 opacity-60"
+                className="w-5 h-5 opacity-80 bg-white p-1 rounded-full"
                 resizeMode="contain"
               />
-              <Text className="text-[11px] font-bold text-gray-400">
+              <Text className="text-[11px] font-bold text-gray-200">
                 {house.address}
               </Text>
             </View>
           </View>
           <View className="flex-row  justify-between">
-            <Text className="text-base font-bold">
+            <Text className="text-base font-bold text-white">
               ETB {house.price.toString().replace(/\B(?=(\d{3})+\b)/g, ",")}
             </Text>
           </View>
@@ -75,33 +77,35 @@ const HouseCard = ({ house }) => {
           <View className="flex-row items-center space-x-4 mt-4">
             <View className="flex-row items-center gap-1">
               <Image
-                source={icon.bedroomicon}
-                className="w-6 h-6"
+                source={icon.bedroomiconwhite}
+                className="w-6 h-6 "
                 resizeMode="contain"
               />
-              <Text className=" font-bold">{house.bedrooms}</Text>
+              <Text className="text-white font-bold">{house.bedrooms}</Text>
             </View>
 
-            <View className="w-1 h-1 bg-black rounded-full"></View>
+            <View className="w-1 h-1 bg-white rounded-full"></View>
 
             <View className="flex-row items-center gap-1">
               <Image
-                source={icon.bathroomicon}
+                source={icon.bathroomiconwhite}
                 className="w-5 h-5"
                 resizeMode="contain"
               />
-              <Text className=" font-bold">{house.bathrooms}</Text>
+              <Text className="text-white font-bold">{house.bathrooms}</Text>
             </View>
 
-            <View className="w-1 h-1 bg-black rounded-full"></View>
+            <View className="w-1 h-1 bg-white rounded-full"></View>
 
             <View className="flex-row items-center gap-1">
               <Image
-                source={icon.areaicon}
-                className="w-6 h-6"
+                source={icon.areaiconwhite}
+                className="w-4 h-4"
                 resizeMode="contain"
               />
-              <Text className=" font-bold">{house.houseSize}m&#178;</Text>
+              <Text className="text-white font-bold">
+                {house.houseSize}m&#178;
+              </Text>
             </View>
           </View>
         </View>

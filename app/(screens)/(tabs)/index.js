@@ -12,7 +12,6 @@ import {
 } from "react-native";
 import React, { useState, useRef } from "react";
 
-import React, { useState } from "react";
 import { Link } from "expo-router";
 import HouseCard from "../../../components/HouseCard";
 import BottomSheet, {
@@ -24,17 +23,6 @@ import BottomSheet, {
 import { useSelector } from "react-redux";
 import { selectHouseData } from "../../../slices/houseSlice";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-
-// add listing import
-// import { useState, useRef, useEffect } from "react";
-// import {
-//   Button,
-//   View,
-//   StyleSheet,
-//   ScrollView,
-//   TextInput,
-//   Text,
-// } from "react-native";
 
 import * as ImagePicker from "expo-image-picker";
 import * as Location from "expo-location";
@@ -118,9 +106,14 @@ const Home = () => {
     setSelectedFilterStyle(filter);
   };
 
+  const handleFilterOperations = (filter) => {
+    handlePresentModal();
+    setSelectedFilter(filter);
+  };
+
   return (
     <>
-      <View className="w-full bg-white h-fit py-4">
+      <View className="w-full bg-primary h-fit py-4">
         <ScrollView
           className=""
           decelerationRate="fast"
@@ -132,7 +125,7 @@ const Home = () => {
               <TouchableOpacity
                 key={index}
                 onPress={() => {
-                  handlePresentModal();
+                  handleFilterOperations(filter);
                 }}
                 className={`rounded-2xl  p-3  ml-5 px-4 w-fit h-auto ${
                   selectedFilter === filter ? selectedFilterStyle : null
@@ -145,7 +138,7 @@ const Home = () => {
                   className={`capitalize font-bold ${
                     selectedFilter === filter
                       ? selectedFilterTextStyle
-                      : "text-gray-500"
+                      : "text-gray-300"
                   }`}
                 >
                   {filter}
@@ -157,7 +150,7 @@ const Home = () => {
       </View>
 
       <ScrollView
-        className="flex-1 gap-0 bg-white"
+        className="flex-1 gap-0 bg-primary"
         decelerationRate="fast"
         vertical={true}
         showsVerticalScrollIndicator={false}
@@ -175,24 +168,31 @@ const Home = () => {
       </ScrollView>
 
       {/* search modal  */}
-      <BottomSheetModalProvider>
+      <BottomSheetModalProvider className="h-full bg-primary">
         <BottomSheetModal
-          className="h-full"
+          className="h-full bg-primary"
           ref={searchBottomSheetRef}
           snapPoints={["30%", "50%", "70%", "100%"]}
           enablePanDownToClose={true}
           animateOnMount={true}
         >
           <BottomSheetScrollView
-            className="pt-5 h-full "
+            className="pt-5 h-full bg-primary"
             decelerationRate="fast"
             vertical={true}
             showsVerticalScrollIndicator={false}
           >
             {/* begin */}
 
-            <View className=" lex-1 text-5xl h-full bg-white">
+            <View className=" lex-1 text-5xl h-full bg-primary">
               <SegmentedControl
+                tintColor="white"
+                backgroundColor="#012847"
+                activeFontStyle={{
+                  fontWeight: "bold",
+                  color: "black",
+                }}
+                appearance="dark"
                 values={["Buy", "Rent"]}
                 selectedIndex={selectedIndex}
                 onChange={(event) => {
