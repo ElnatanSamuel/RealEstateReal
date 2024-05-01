@@ -7,23 +7,30 @@ import { Text, View } from 'react-native';
 const ScreensLayout = () => {
   return (
     <GestureHandlerRootView className="flex-1">
-      <Drawer>
-        <View className="w-full h-72 bg-red-500">
-          <Text>sdfsdf</Text>
-        </View>
+     <Drawer
+        screenOptions={{
+          drawerStyle: { backgroundColor: "#012847" },
+        }}>
+
       <Drawer.Screen name="home"   
         options={{
           drawerLabel:"Home",
-          title:"Home"
+          title:"Home",
+            headerStyle: { backgroundColor: "#012847" },
+            headerTintColor: "white",
+            drawerLabelStyle: {
+              color: "white",
+            },
+
         }}
         />
         <Drawer.Screen
           name="(tabs)"
           options={{
             drawerLabel: "Search",
+            title: "Search",
             headerStyle: { backgroundColor: "#012847" },
             headerTintColor: "white",
-            title: "Search",
             drawerLabelStyle: {
               color: "white",
             },
@@ -44,7 +51,13 @@ const ScreensLayout = () => {
         <Drawer.Screen name="saved"  
         options={{
           drawerLabel:"Saved",
-          title:"Saved"
+          title:"Saved",
+          headerStyle: { backgroundColor: "#012847" },
+          headerTintColor: "white",
+          drawerLabelStyle: {
+            color: "white",
+          },
+
         }}
         />
         <Drawer.Screen
@@ -52,6 +65,8 @@ const ScreensLayout = () => {
           options={{
             drawerLabel: "Settings",
             title: "Settings",
+            headerStyle: { backgroundColor: "#012847" },
+            headerTintColor: "white",
             drawerLabelStyle: {
               color: "white",
             },
