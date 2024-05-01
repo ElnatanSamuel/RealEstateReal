@@ -21,7 +21,6 @@ const ScreensLayout = () => {
             drawerLabelStyle: {
               color: "white",
             },
-
         }}
         />
         <Drawer.Screen
@@ -57,7 +56,6 @@ const ScreensLayout = () => {
           drawerLabelStyle: {
             color: "white",
           },
-
         }}
         />
         <Drawer.Screen
