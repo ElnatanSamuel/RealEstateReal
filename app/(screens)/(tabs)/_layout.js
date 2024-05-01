@@ -53,7 +53,16 @@ export default function TabLayout() {
     <>
     <Tabs 
     // initialRouteName='results'
-    screenOptions={{ tabBarActiveTintColor: 'blue' }}>
+    screenOptions={{ 
+      tabBarActiveTintColor: "#F0DE93",
+      tabBarInactiveTintColor: "gray",
+      tabBarStyle: {
+        backgroundColor: "#012847",
+        height: 60,
+        paddingBottom: 10,
+        paddingTop: 10,
+      },      
+      }}>
       <Tabs.Screen
         name="index"
         options={{
@@ -75,11 +84,11 @@ export default function TabLayout() {
       <Tabs.Screen
         name="reccomendation"
         options={{
-          // title: 'Reccomendation',
+          title: 'Reccomendation',
         //   href:null,
           headerShown: false,
           // tabBarLabel: 'Profile'
-          // tabBarIcon: ({ color }) => <FontAwesome size={28} name="cog" color={color} />,
+          tabBarIcon: ({ color }) => <FontAwesome size={28} name="cog" color={color} />,
         }} />
         <Tabs.Screen
           name="featured"

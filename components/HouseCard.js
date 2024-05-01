@@ -21,7 +21,9 @@ const HouseCard = ({ house }) => {
           </View>
           <View>
             <View className="flex-row items-center">
-              <Text className="text-base font-bold">{house.listedBy.name}</Text>
+              <Text className="text-base text-white  font-bold">
+                {house.listedBy.name}
+                </Text>
               {house.listedBy.verified && (
                 <Image
                   source={icon.verifiedicon}
@@ -30,7 +32,7 @@ const HouseCard = ({ house }) => {
                 />
               )}
             </View>
-            <Text className="text-[12px] font-semibold text-gray-400">
+            <Text className="text-[12px] font-semibold text-gray-200">
               {house.listedBy.phone}
             </Text>
           </View>
