@@ -57,15 +57,15 @@ const HouseCard = ({ house }) => {
                 {house.description.slice(0, 20)}
               </Text>
               <View className="flex-row -ml-2 gap-1 items-center justify-center ">
-                <Image
-                  source={icon.blacklocationicon}
-                  className="w-5 h-5 opacity-80 bg-white p-1 rounded-full"
-                  resizeMode="contain"
-                />
-                <Text className="text-[11px] font-bold text-gray-200">
-                  {house.address}
-                </Text>
-              </View>
+              <Image
+                source={icon.blacklocationicon}
+                className="w-5 h-5 opacity-80 bg-white p-1 rounded-full"
+                resizeMode="contain"
+              />
+              <Text className="text-[11px] font-bold text-gray-200">
+                {house.address}
+              </Text>
+            </View>
             </View>
             <View className="flex-row  justify-between">
               <Text className="text-base font-bold text-white">
