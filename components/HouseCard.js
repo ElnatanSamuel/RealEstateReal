@@ -82,29 +82,34 @@ const HouseCard = ({ house }) => {
                   className="w-6 h-6 "
                   resizeMode="contain"
                 />
-                <Text className="text-white font-bold">{house.bedrooms}</Text>
+                <Text className="text-white font-bold">
+                  {house.bedrooms}
+                  </Text>
+
               </View>
 
-              <View className="w-1 h-1 bg-black rounded-full"></View>
+              <View className="w-1 h-1 bg-white rounded-full"></View>
 
               <View className="flex-row items-center gap-1">
                 <Image
-                  source={icon.bathroomicon}
+                  source={icon.bathroomiconwhite}
                   className="w-5 h-5"
                   resizeMode="contain"
                 />
-                <Text className=" font-bold">{house.bathrooms}</Text>
+                <Text className="text-white font-bold">
+                  {house.bathroomiconwhite}
+                </Text>
               </View>
 
-              <View className="w-1 h-1 bg-black rounded-full"></View>
+              <View className="w-1 h-1 bg-white rounded-full"></View>
 
               <View className="flex-row items-center gap-1">
                 <Image
-                  source={icon.areaicon}
-                  className="w-6 h-6"
+                  source={icon.areaiconwhite}
+                  className="w-4 h-4"
                   resizeMode="contain"
                 />
-                <Text className=" font-bold">{house.houseSize}m&#178;</Text>
+                <Text className="text-white  font-bold">{house.houseSize}m&#178;</Text>
               </View>
             </View>
           </View>
