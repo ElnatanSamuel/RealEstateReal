@@ -16,6 +16,11 @@ const ScreensLayout = () => {
           options={{
             drawerLabel: "Home",
             title: "Home",
+            headerStyle: { backgroundColor: "#012847" },
+            headerTintColor: "white",
+            drawerLabelStyle: {
+              color: "white",
+            },
             drawerLabelStyle: {
               color: "white",
             },
@@ -25,9 +30,9 @@ const ScreensLayout = () => {
           name="(tabs)"
           options={{
             drawerLabel: "Search",
+            title: "Search",
             headerStyle: { backgroundColor: "#012847" },
             headerTintColor: "white",
-            title: "Search",
             drawerLabelStyle: {
               color: "white",
             },
@@ -50,6 +55,11 @@ const ScreensLayout = () => {
           options={{
             drawerLabel: "Saved",
             title: "Saved",
+            headerStyle: { backgroundColor: "#012847" },
+            headerTintColor: "white",
+            drawerLabelStyle: {
+              color: "white",
+            },
             drawerLabelStyle: {
               color: "white",
             },
@@ -60,6 +70,11 @@ const ScreensLayout = () => {
           options={{
             drawerLabel: "Settings",
             title: "Settings",
+            headerStyle: { backgroundColor: "#012847" },
+            headerTintColor: "white",
+            drawerLabelStyle: {
+              color: "white",
+            },
             drawerLabelStyle: {
               color: "white",
             },

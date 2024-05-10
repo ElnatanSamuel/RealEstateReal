@@ -13,18 +13,19 @@ const profile = () => {
 
   return (
     <>
-    <View className="w-full h-32 bg-red-500 z-20 ">
-      <View className="w-24 aspect-square rounded-full bg-white border relative top-1/2 p-1 bg-[url('../../assets/images/logo.png')] bg-cover bg-center">
+    <View className="w-full h-32 z-20 bg-primary border border-b-white">
+      <View className="w-24 aspect-square rounded-full bg-white border border-white relative top-1/2 p-1 bg-[url('../../assets/images/logo.png')] bg-cover bg-center">
         <View className="w-full h-full bg-green-500 rounded-full" ></View>
+        
       </View>
     </View>
 
-    <View className="cpb-5 border">
+    <View className="cpb-5 border bg-primary">
         <ScrollView className="pt-8">
           <View className="pr-8">
-            <Text className="text-3xl ">Real Estate Name</Text>
-            <Text className="text-sm">Real Estate City</Text>
-            <Text className="text-sm mt05">Also from this client</Text>
+            <Text className="text-white text-3xl ">John Doe</Text>
+            <Text className="text-white text-sm">Addis Ababa</Text>
+            <Text className="text-white text-sm mt05">Also from this client</Text>
           </View>
           <ResultList arrayData={houseData}  />
         </ScrollView>

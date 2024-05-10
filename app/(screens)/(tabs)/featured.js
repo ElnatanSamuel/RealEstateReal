@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <>
       <ScrollView
-          className="flex-1 gap-0"
+          className="flex-1 gap-0 bg-primary"
           decelerationRate="fast"
           vertical={true}
           showsVerticalScrollIndicator={false}>

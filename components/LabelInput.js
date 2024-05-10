@@ -7,7 +7,7 @@ const LabelInput = ({ title, customStyles }) => {
       <Text className="text-lg mb-2 text-white">{title}</Text>
 
       <TextInput
-        className={`border border-white/90 ${customStyles} px-2 py-3 rounded-md`}
+        className={`border border-white/90 ${customStyles} px-2 py-3 text-white rounded-md`}
       />
     </View>
   );

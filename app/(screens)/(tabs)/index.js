@@ -47,6 +47,7 @@ const Home = () => {
   const houseData = useSelector(selectHouseData);
   const searchBottomSheetRef = useRef(null);
   const optionsBottomSheetRef = useRef(null);
+  const optionsFeaturesBottomSheetRef = useRef(null);
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -79,6 +80,7 @@ const Home = () => {
 
   const rooms = ["Bedroom", "Livingroom", "Kitchen", "Bathroom", "Diningroom"];
   const PropertyType = ["Any", "House", "Apartment", "Condo", "Real Estate"];
+  const Feature = ["Pool", "Garage", "Security"];
 
   function handlePresentModal() {
     searchBottomSheetRef.current?.present();
@@ -87,6 +89,10 @@ const Home = () => {
 
   function handleOptionsPresentModal() {
     optionsBottomSheetRef.current?.present();
+  }  
+  
+  function handleOptionsFeaturesPresentModal() {
+    optionsFeaturesBottomSheetRef.current?.present();
   }
 
   const filters = [
@@ -175,7 +181,15 @@ const Home = () => {
           snapPoints={["30%", "50%", "70%", "100%"]}
           enablePanDownToClose={true}
           animateOnMount={true}
-        >
+          backgroundComponent={() =>
+            <View style={styles.contentContainer}/>
+          }
+          handleComponent={() =>
+            <View style={styles.closeLineContainer}>
+              <View style={styles.closeLine}></View>
+            </View>
+            }
+          >
           <BottomSheetScrollView
             className="pt-5 h-full bg-primary"
             decelerationRate="fast"
@@ -239,11 +253,11 @@ const Home = () => {
                       </View>
                       <View className="flex-1 absolute right-0">
                         <TouchableOpacity
-                          className=" bg-black p-[17px] rounded-r-md  w-full items-center"
+                          className=" bg-white p-[17px] rounded-r-md  w-full items-center"
                           onPress={getLocation}
                           title=""
                         >
-                          <Text className="text-white font-bold">
+                          <Text className="text-black font-bold">
                             Use my Location
                           </Text>
                         </TouchableOpacity>
@@ -276,48 +290,47 @@ const Home = () => {
                         onPress={handleOptionsPresentModal}
                         className=""
                       >
-                        <Text className="text-lg opacity-80">
+                        <Text className="text-lg opacity-100 text-white">
                           Property Type
                         </Text>
-                        <Text className="text-sm opacity-60">Any</Text>
+                        <Text className="text-sm opacity-60 text-white">Any</Text>
                       </TouchableOpacity>
                     </View>
 
                     {/* Features */}
                     <View className="mt-6">
-                      <TouchableOpacity onPress={handleOptionsPresentModal}>
-                        <Text className="text-lg opacity-80">Features</Text>
-                        <Text className="text-sm opacity-60">Any</Text>
+                      <TouchableOpacity onPress={handleOptionsFeaturesPresentModal}>
+                        <Text className="text-lg opacity-100 text-white">Features</Text>
+                        <Text className="text-sm opacity-60 text-white">Any</Text>
                       </TouchableOpacity>
                     </View>
 
                     <TouchableOpacity
-                      className=" bg-black p-[17px] rounded-full mt-4 w-full items-center"
+                      className=" bg-white p-[17px] rounded-full mt-4 w-full items-center"
                       onPress={handlePresentModal}
                       title=""
                     >
-                      <Text className="text-white font-bold">Search</Text>
+                      <Text className="text-black font-bold">Search</Text>
                     </TouchableOpacity>
                   </View>
                 </View>
               </ScrollView>
               {/* end */}
 
-              {/* options bottom sheet */}
+              {/* options property bottom sheet */}
               <BottomSheetModalProvider>
                 <BottomSheetModal
                   className="h-full"
                   ref={optionsBottomSheetRef}
                   snapPoints={["53%,100%"]}
                   enablePanDownToClose={true}
-                  animateOnMount={true}
-                >
+                  animateOnMount={true}>
+
                   <BottomSheetScrollView
                     className="pt-5 h-full "
                     decelerationRate="fast"
                     vertical={true}
-                    showsVerticalScrollIndicator={false}
-                  >
+                    showsVerticalScrollIndicator={false}>
                     <View className="px-4">
                       <Text className="text-xl opacity-80  font-bold my-4">
                         Property Type
@@ -336,7 +349,7 @@ const Home = () => {
                           </View>
                         );
                       })}
-                      <TouchableOpacity className="bg-black w-full  py-5 rounded-xl">
+                      <TouchableOpacity className="bg-black w-full  py-5 rounded-full">
                         <Text className="text-white text-center font-bold">
                           Apply
                         </Text>
@@ -345,6 +358,50 @@ const Home = () => {
                   </BottomSheetScrollView>
                 </BottomSheetModal>
               </BottomSheetModalProvider>
+
+              {/* options property bottom sheet */}
+              <BottomSheetModalProvider>
+                <BottomSheetModal
+                  className="h-full"
+                  ref={optionsFeaturesBottomSheetRef}
+                  snapPoints={["53%,100%"]}
+                  enablePanDownToClose={true}
+                  animateOnMount={true}
+                >
+                  <BottomSheetScrollView
+                    className="pt-5 h-full "
+                    decelerationRate="fast"
+                    vertical={true}
+                    showsVerticalScrollIndicator={false}
+                  >
+                    <View className="px-4">
+                      <Text className="text-xl opacity-80  font-bold my-4">
+                        Property Type
+                      </Text>
+                      {Feature.map((property) => {
+                        return (
+                          <View className="flex-row justify-between mb-5 ">
+                            <Text className="text-lg opacity-70">
+                              {property}
+                            </Text>
+                            <Checkbox
+                              value={isChecked}
+                              className="opacity-80"
+                              onValueChange={setChecked}
+                            />
+                          </View>
+                        );
+                      })}
+                      <TouchableOpacity className="bg-black w-full  py-5 rounded-full">
+                        <Text className="text-white text-center font-bold">
+                          Apply
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  </BottomSheetScrollView>
+                </BottomSheetModal>
+              </BottomSheetModalProvider>
+
             </View>
           </BottomSheetScrollView>
         </BottomSheetModal>
@@ -352,5 +409,27 @@ const Home = () => {
     </>
   );
 };
+
+
+const styles = StyleSheet.create({
+  contentContainer: {
+    ...StyleSheet.absoluteFillObject,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    backgroundColor: '#012847'
+  },
+  closeLineContainer: {
+    alignSelf: 'center',
+    paddingVertical:10
+  },
+  closeLine: {
+    width: 40,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: "white",
+    marginTop: 9,
+  },
+})
+
 
 export default Home;
